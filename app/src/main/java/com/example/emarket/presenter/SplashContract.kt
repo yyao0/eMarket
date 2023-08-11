@@ -4,10 +4,13 @@ import android.content.Context
 
 interface SplashContract {
     interface View{
-        fun navigateToLogin(splash: Boolean)
+        fun navigateToIntro()
+
+        fun navigateToIntroAfterDelay()
     }
 
     interface Presenter{
         fun accessSplashPreference(context: Context)
+
     }
 }

@@ -5,6 +5,13 @@
     <dimen name="auto_adjust">0dp</dimen>
     <dimen name="greet_text_size">30sp</dimen>
     <dimen name="login_button_margin">20dp</dimen>
+    <dimen name="skip_button_margin">20dp</dimen>
+    <dimen name="intro_card_radius">50dp</dimen>
+    <dimen name="intro_card_font_size">25sp</dimen>
+    <dimen name="intro_image_padding">20dp</dimen>
+    <dimen name="intro_image_width">400dp</dimen>
+    <dimen name="intro_image_height">300dp</dimen>
+    <dimen name="intro_text_margin">50dp</dimen>
     <item name="guideline_start" type="dimen" format="float">0.1</item>
     <item name="guideline_end" type="dimen" format="float">0.9</item>
     <item name="ratio_two_third" type="dimen" format="float">0.6</item>

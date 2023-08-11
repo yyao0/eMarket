@@ -9,9 +9,9 @@ class SplashPresenter(private val view:SplashContract.View):SplashContract.Prese
         val splash = AppUtils.getSharedPrefsBoolean(context, "ActivityPrefs", "splash", true)
         if (splash){
             AppUtils.setSharedPrefsBoolean(context, "ActivityPrefs", "splash", false)
-            view.navigateToLogin(true)
+            view.navigateToIntroAfterDelay()
         } else {
-            view.navigateToLogin(false)
+            view.navigateToIntro()
         }
     }
 }

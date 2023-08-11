@@ -2,17 +2,18 @@ package com.example.emarket.presenter
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
+import com.example.emarket.utils.AppUtils
 
 class LoginPresenter(private val view: LoginContract.View, private val context: Context) : LoginContract.Presenter {
 
     override fun checkLogin(username: String, password: String) {
         if (username != "" && password != "") {
             setLoginPreference(true)
-            view.showLoginMessage("Login success")
+            AppUtils.showToast(context, "Login success")
             view.navigateToProfile()
         } else {
             setLoginPreference(false)
-            view.showLoginMessage("Invalid username or password")
+            AppUtils.showToast(context, "Invalid username or password")
         }
     }
 
@@ -25,5 +26,6 @@ class LoginPresenter(private val view: LoginContract.View, private val context: 
         val sharedPreferences = context.getSharedPreferences("ActivityPrefs", AppCompatActivity.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putBoolean("loggedIn", loggedIn)
+        editor.apply()
     }
 }

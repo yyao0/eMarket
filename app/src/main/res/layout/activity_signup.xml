@@ -53,6 +53,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/password"
         android:textSize="20sp"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="@id/guideline3"
         app:layout_constraintStart_toStartOf="@id/guideline1"
         app:layout_constraintTop_toBottomOf="@id/et_username" />
@@ -63,12 +64,13 @@
         android:layout_height="wrap_content"
         android:hint="@string/password2"
         android:textSize="20sp"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="@id/guideline3"
         app:layout_constraintStart_toStartOf="@id/guideline1"
         app:layout_constraintTop_toBottomOf="@id/et_password" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_signup"
         android:layout_width="@dimen/auto_adjust"
         android:layout_height="wrap_content"
         android:text="@string/signup"

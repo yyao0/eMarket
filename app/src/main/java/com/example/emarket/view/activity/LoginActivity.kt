@@ -8,6 +8,7 @@ import com.example.emarket.R
 import com.example.emarket.databinding.ActivityLoginBinding
 import com.example.emarket.presenter.LoginContract
 import com.example.emarket.presenter.LoginPresenter
+import com.example.emarket.utils.AppUtils
 
 class LoginActivity : AppCompatActivity() , LoginContract.View {
 
@@ -37,19 +38,12 @@ class LoginActivity : AppCompatActivity() , LoginContract.View {
 
     override fun navigateToSignup() {
         binding.tvSignup.setOnClickListener {
-            val intent = Intent(this, SignupActivity::class.java)
-            startActivity(intent)
-            finish()
+            AppUtils.navigateToActivity(this, SignupActivity::class.java)
         }
     }
 
     override fun navigateToProfile() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        finish()
+        AppUtils.navigateToActivity(this, MainActivity::class.java)
     }
 
-    override fun showLoginMessage(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
 }

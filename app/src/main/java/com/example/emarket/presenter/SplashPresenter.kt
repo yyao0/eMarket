@@ -2,15 +2,13 @@ package com.example.emarket.presenter
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
+import com.example.emarket.utils.AppUtils
 
 class SplashPresenter(private val view:SplashContract.View):SplashContract.Presenter {
     override fun accessSplashPreference(context: Context) {
-        val sharedPreferences = context.getSharedPreferences("ActivityPrefs", AppCompatActivity.MODE_PRIVATE)
-        var splash = sharedPreferences.getBoolean("splash", true)
+        val splash = AppUtils.getSharedPrefsBoolean(context, "ActivityPrefs", "splash", true)
         if (splash){
-            val editor = sharedPreferences.edit()
-            editor.putBoolean("splash", false)
-            editor.apply()
+            AppUtils.setSharedPrefsBoolean(context, "ActivityPrefs", "splash", false)
             view.navigateToLogin(true)
         } else {
             view.navigateToLogin(false)

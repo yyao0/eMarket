@@ -5,10 +5,16 @@ import android.content.Context
 interface MainContract {
     interface View {
 
+        fun navigateToLogin()
+
     }
 
     interface Presenter{
-        fun activateSplashOnDestroy(context: Context)
+        fun activateSplashOnDestroy()
+
+        fun logout()
+
+
 
     }
 

@@ -8,7 +8,6 @@ interface LoginContract {
 
         fun navigateToProfile()
 
-        fun showLoginMessage(message: String)
     }
 
     interface Presenter {

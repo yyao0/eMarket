@@ -1,5 +1,6 @@
 package com.example.emarket.view.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.emarket.R
@@ -16,15 +17,24 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        presenter = MainPresenter(this)
+        presenter = MainPresenter(view = this, context = this)
+
+        binding.btnLogout.setOnClickListener {
+            presenter.logout()
+            navigateToLogin()
+        }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        presenter.activateSplashOnDestroy(this)
+        presenter.activateSplashOnDestroy()
     }
 
-
+    override fun navigateToLogin() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 
 
 }

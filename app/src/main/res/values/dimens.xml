@@ -2,4 +2,10 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="splash_logo_width">300dp</dimen>
     <dimen name="splash_logo_height">150dp</dimen>
+    <dimen name="auto_adjust">0dp</dimen>
+    <dimen name="greet_text_size">30sp</dimen>
+    <dimen name="login_button_margin">20dp</dimen>
+    <item name="guideline_start" type="dimen" format="float">0.1</item>
+    <item name="guideline_end" type="dimen" format="float">0.9</item>
+    <item name="ratio_two_third" type="dimen" format="float">0.6</item>
 </resources>

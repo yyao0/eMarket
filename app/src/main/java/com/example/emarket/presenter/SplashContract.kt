@@ -4,7 +4,7 @@ import android.content.Context
 
 interface SplashContract {
     interface View{
-        fun navigateToLogin()
+        fun navigateToLogin(splash: Boolean)
     }
 
     interface Presenter{

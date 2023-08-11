@@ -43,4 +43,9 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="greeting">Hello there! Welcome back</string>
+    <string name="signin">Sign in</string>
+    <string name="create_account">CREATE A NEW ACCOUNT</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
 </resources>

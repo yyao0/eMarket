@@ -11,11 +11,16 @@ interface LoginContract {
     }
 
     interface Presenter {
-        fun checkLogin(username: String, password:String)
+        fun checkLoginFromAPI(email: String, password:String, callback: ResponseCallback)
 
         fun getLoginPreference() : Boolean
 
         fun setLoginPreference(loggedIn: Boolean)
 
+    }
+
+    interface ResponseCallback {
+        fun onResponse(status: Int, message: String)
+        fun onError(errorMessage: String)
     }
 }

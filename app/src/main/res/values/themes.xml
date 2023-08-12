@@ -2,13 +2,22 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.EMarket" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:fontFamily">@font/poppins_regular</item>
-        <item name="colorPrimary">@color/theme</item>
-        <item name="android:textColorPrimary">@color/default_text_color</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:windowFullscreen">true</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
     <style name="Theme.EMarket" parent="Base.Theme.EMarket" />
+
+    <style name="IntroTitleText">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:textSize">@dimen/intro_title</item>
+    </style>
 
 
 

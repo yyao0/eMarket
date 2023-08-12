@@ -2,6 +2,12 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="theme">#62C0CC</color>
-    <color name="default_text_color">#333333</color>
+    <color name="colorPrimary">#6467AC</color>
+    <color name="colorPrimaryVariant">#8C93DB</color>
+    <color name="colorSecondary">#FD8465</color>
+    <color name="colorSecondaryVariant">#FCB879</color>
+    <color name="textColorPrimary">#333333</color>
+    <color name="textColorSecondary">#616161</color>
+    <color name="transparent">#00000000</color>
+    <color name="light_blue">#EDF7F9</color>
 </resources>

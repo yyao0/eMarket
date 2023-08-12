@@ -2,4 +2,6 @@
 <resources>
     <string name="mobile">Mobile Number</string>
     <string name="email">Email</string>
+    <string name="intro_online_shopping">Online Shopping</string>
+    <string name="intro_fast_delivery">Fast Delivery</string>
 </resources>

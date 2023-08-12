@@ -11,4 +11,9 @@ interface SignupContract {
 
         fun setLoginPreference(loggedIn: Boolean)
     }
+
+    interface ResponseCallback {
+        fun onResponse(status: Int, message: String)
+        fun onError(errorMessage: String)
+    }
 }

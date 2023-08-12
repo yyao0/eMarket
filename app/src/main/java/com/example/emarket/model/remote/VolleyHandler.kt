@@ -1,74 +1,26 @@
-package com.example.currentnews.model.remote
+package com.example.emarket.model.remote
 
 import android.content.Context
 import com.android.volley.Request
+import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.currentnews.model.entity.News
 import com.example.currentnews.model.entity.NewsResponse
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import org.json.JSONObject
 
 object VolleyHandler {
 
-    const val BASE_URL_LATEST_NEWS = "https://api.currentsapi.services/v1/latest-news"
-    const val BASE_URL_SEARCH_NEWS = "https://api.currentsapi.services/v1/search"
+    const val BASE_URL = "http://localhost/myshop/index.php/"
+    const val End_POINT_USER_REGISTER =  "User/register"
+    const val End_POINT_USER_LOGIN =  "User/auth"
+    const val End_POINT_USER_LOGOUT =  "User/logout"
+    const val End_POINT_USER_ADDRESS =  "User/address"
+    val HEADER = hashMapOf( "Content-type" to "application/json")
 
-    fun getLatestNews(context: Context, callback: (List<News>?, String?) -> Unit) {
-        val requestQueue = Volley.newRequestQueue(context)
-        val stringRequest = object: StringRequest(
-            Request.Method.GET,
-            BASE_URL_LATEST_NEWS,
-            {
-                val typeToken = object : TypeToken<NewsResponse>() {}
-                val response = Gson().fromJson(it, typeToken)
 
-                if (response.status == "ok"){
-                    callback(response.news, null)
-                }
-            }, {
-                callback(null, it.toString())
-            }
-        ) {
-            override fun getHeaders(): MutableMap<String, String> {
-                val header = HashMap<String, String>()
-                header["Authorization"] = "YP1NH-qY37RyEt7qSI5TDbUBijpGtMfV_186Sn_1p_0Nh_bV"
-                return header
-            }
-        }
-        requestQueue.add(stringRequest)
-    }
-
-    fun searchNews(context: Context, keyword: String, callback: (List<News>?, String?) -> Unit) {
-        val requestQueue = Volley.newRequestQueue(context)
-        val stringRequest = object: StringRequest(
-            Request.Method.GET,
-            //BASE_URL_SEARCH_NEWS,
-            "$BASE_URL_SEARCH_NEWS?keywords=$keyword",
-            {
-                val typeToken = object : TypeToken<NewsResponse>() {}
-                val response = Gson().fromJson(it, typeToken)
-                if (response.status == "ok"){
-                    callback(response.news, null)
-                }
-            }, {
-                callback(null, it.toString())
-            }
-        ) {
-            override fun getHeaders(): MutableMap<String, String> {
-                val header = HashMap<String, String>()
-                header["Authorization"] = "YP1NH-qY37RyEt7qSI5TDbUBijpGtMfV_186Sn_1p_0Nh_bV"
-                return header
-            }
-
-            override fun getParams(): MutableMap<String, String>? {
-                val params = HashMap<String, String>()
-                params["keywords"] = keyword
-                return params
-            }
-        }
-        requestQueue.add(stringRequest)
-    }
 
 
 

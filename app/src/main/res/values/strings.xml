@@ -57,4 +57,7 @@
     <string name="intro_free_shipping">FREE SHIPPING</string>
     <string name="intro_easy_payment">EASY PAY</string>
     <string name="intro_sale">MEGA SALE</string>
+    <string name="name">Full Name</string>
+    <string name="mobile">Mobile Number</string>
+    <string name="email">Email</string>
 </resources>

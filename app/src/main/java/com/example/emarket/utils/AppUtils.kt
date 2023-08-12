@@ -6,6 +6,8 @@ import android.content.Intent
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.startActivity
+import androidx.fragment.app.Fragment
+import com.example.emarket.R
 import com.example.emarket.view.activity.MainActivity
 
 object AppUtils {
@@ -42,5 +44,12 @@ object AppUtils {
         val intent = Intent(context, activity)
         context.startActivity(intent)
         (context as Activity).finish()
+    }
+
+    fun navigateToFragment(activity: AppCompatActivity, fragment: Fragment) {
+        val transaction = activity.supportFragmentManager.beginTransaction()
+        transaction.replace(android.R.id.content, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 }

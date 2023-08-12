@@ -1,16 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.EMarket" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="colorPrimary">@color/theme</item>
+        <item name="android:textColorPrimary">@color/default_text_color</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="Theme.EMarket" parent="Base.Theme.EMarket" />
 
 
-    <style name="IntroTitleText" parent="TextAppearance.AppCompat.Large">
-        <item name="android:textSize">24sp</item>
-        <item name="android:textColor">#333333</item>
-        <item name="android:textStyle">bold</item>
-    </style>
+
 </resources>

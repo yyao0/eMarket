@@ -9,6 +9,7 @@ import com.example.emarket.databinding.ActivityLoginBinding
 import com.example.emarket.presenter.LoginContract
 import com.example.emarket.presenter.LoginPresenter
 import com.example.emarket.utils.AppUtils
+import com.example.emarket.view.fragment.SignupFragment
 
 class LoginActivity : AppCompatActivity() , LoginContract.View {
 
@@ -27,9 +28,9 @@ class LoginActivity : AppCompatActivity() , LoginContract.View {
         }
 
         binding.btnLogin.setOnClickListener {
-            val username = binding.etUsername.text.toString()
+            val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
-            presenter.checkLogin(username, password)
+            presenter.checkLogin(email, password)
         }
 
         navigateToSignup()
@@ -38,7 +39,7 @@ class LoginActivity : AppCompatActivity() , LoginContract.View {
 
     override fun navigateToSignup() {
         binding.tvSignup.setOnClickListener {
-            AppUtils.navigateToActivity(this, SignupActivity::class.java)
+            AppUtils.navigateToFragment(this, SignupFragment())
         }
     }
 

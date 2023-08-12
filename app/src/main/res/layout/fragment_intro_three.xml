@@ -21,7 +21,6 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:layout_marginTop="@dimen/intro_text_margin"
-                style="@style/IntroTitleText"
                 android:text="@string/intro_sale" />
 
 

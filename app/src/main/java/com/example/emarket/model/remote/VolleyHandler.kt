@@ -1,12 +1,15 @@
 package com.example.emarket.model.remote
 
 import android.content.Context
+import android.util.Log
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.emarket.model.local.entity.Category
 import com.example.emarket.model.local.entity.User
+import com.example.emarket.presenter.CategoryContract
 import com.example.emarket.presenter.LoginContract
 import com.example.emarket.presenter.MainContract
 import com.example.emarket.presenter.SignupContract
@@ -21,6 +24,7 @@ object VolleyHandler {
     const val End_POINT_USER_LOGIN =  "User/auth"
     const val End_POINT_USER_LOGOUT =  "User/logout"
     const val End_POINT_USER_ADDRESS =  "User/address"
+    const val End_POINT_CATEGORY =  "Category"
     val HEADER = hashMapOf( "Content-type" to "application/json")
 
     fun userRegister(
@@ -82,11 +86,7 @@ object VolleyHandler {
                 val message = response.getString("message")
                 if (response.has("user")) {
                     val userObject = response.getJSONObject("user")
-                    val userId = userObject.getString("user_id")
-                    val fullName = userObject.getString("full_name")
-                    val mobileNo = userObject.getString("mobile_no")
-                    val userEmail = userObject.getString("email_id")
-                    val user = User(userId, fullName, mobileNo, userEmail)
+                    val user = Gson().fromJson(userObject.toString(), User::class.java)
 
                     callback.onResponse(status, message, user)
                 } else {
@@ -136,6 +136,56 @@ object VolleyHandler {
             }
             requestQueue.add(jsonObjectRequest)
     }
+
+    fun getCategory(context: Context, callback: CategoryContract.ReponseCallback) {
+        val url = "$BASE_URL$End_POINT_CATEGORY"
+        val requestQueue = Volley.newRequestQueue(context)
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.GET, url, null,
+            { response ->
+                val status = response.getInt("status")
+                val message = response.getString("message")
+
+                if (status == 0) {
+                    val categoriesArray = response.getJSONArray("categories")
+                    val categoriesList = mutableListOf<Category>()
+                    for (i in 0 until categoriesArray.length()) {
+                        val categoryObject = categoriesArray.getJSONObject(i)
+                        val categoryId = categoryObject.getString("category_id")
+                        val categoryName = categoryObject.getString("category_name")
+                        val categoryImageUrl = categoryObject.getString("category_image_url")
+                        val isActive = categoryObject.getString("is_active")
+
+                        val category =
+                            Category(categoryId, categoryName, categoryImageUrl, isActive)
+                        categoriesList.add(category)
+                    }
+                    Log.i("tag", categoriesArray.toString())
+                    callback.onResponse(status, message, categoriesList)
+                } else {
+                    callback.onResponse(status, message, null)
+                }
+            },
+            { error ->
+                val errorMessage = error.message ?: "An error occurred"
+                callback.onError(errorMessage)
+            })
+        requestQueue.add(jsonObjectRequest)
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 

@@ -3,11 +3,11 @@ package com.example.emarket.presenter
 interface SignupContract {
 
     interface View {
-        fun navigateToProfile()
+        fun navigateToLogin()
     }
 
     interface Presenter {
-        fun checkSignup(username: String, password:String, password2: String)
+        fun checkSignupRemote(fullName: String, mobileNo: String, emailId: String, password: String,)
 
         fun setLoginPreference(loggedIn: Boolean)
     }
@@ -16,4 +16,5 @@ interface SignupContract {
         fun onResponse(status: Int, message: String)
         fun onError(errorMessage: String)
     }
+
 }

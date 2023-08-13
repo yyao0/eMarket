@@ -1,6 +1,7 @@
 package com.example.emarket.presenter
 
 import android.content.Context
+import com.example.emarket.model.local.entity.User
 
 interface LoginContract {
     interface View {
@@ -11,7 +12,7 @@ interface LoginContract {
     }
 
     interface Presenter {
-        fun checkLoginFromAPI(email: String, password:String, callback: ResponseCallback)
+        fun checkLoginRemote(email: String, password:String)
 
         fun getLoginPreference() : Boolean
 
@@ -20,7 +21,7 @@ interface LoginContract {
     }
 
     interface ResponseCallback {
-        fun onResponse(status: Int, message: String)
+        fun onResponse(status: Int, message: String, user: User?)
         fun onError(errorMessage: String)
     }
 }

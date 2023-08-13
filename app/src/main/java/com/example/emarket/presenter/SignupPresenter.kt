@@ -1,15 +1,34 @@
 package com.example.emarket.presenter
 
 import android.content.Context
+import com.example.emarket.model.remote.VolleyHandler
 import com.example.emarket.utils.AppUtils
 
 class SignupPresenter(private val view: SignupContract.View, private val context: Context) : SignupContract.Presenter {
-    override fun checkSignup(username: String, password: String, password2: String) {
-        if (username != "" && password != "" && password2 != "" && password == password2) {
-            AppUtils.showToast(context, "Signup success")
-            setLoginPreference(true)
-            view.navigateToProfile()
-        }
+
+    override fun checkSignupRemote(
+        fullName: String,
+        mobileNo: String,
+        emailId: String,
+        password: String
+    ) {
+        VolleyHandler.userRegister(context, fullName, mobileNo, emailId, password, object:SignupContract.ResponseCallback{
+            override fun onResponse(status: Int, message: String) {
+                if (status == 0) {
+                    setLoginPreference(true)
+                    AppUtils.showToast(context, message)
+                    view.navigateToLogin()
+                } else {
+                    setLoginPreference(false)
+                    AppUtils.showToast(context, message)
+                }
+            }
+
+            override fun onError(errorMessage: String) {
+                setLoginPreference(false)
+                AppUtils.showToast(context, errorMessage)
+            }
+        })
     }
 
     override fun setLoginPreference(loggedIn: Boolean) {

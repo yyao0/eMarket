@@ -32,8 +32,9 @@ class SignupFragment : Fragment(), SignupContract.View {
 
 
 
-    override fun navigateToProfile() {
-        AppUtils.navigateToActivity(requireContext(), MainActivity::class.java)
+    override fun navigateToLogin() {
+        requireActivity().supportFragmentManager.popBackStack()
+
     }
 
 

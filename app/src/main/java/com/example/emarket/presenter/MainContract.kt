@@ -5,6 +5,7 @@ import android.content.Context
 interface MainContract {
     interface View {
 
+        fun initNavigationDrawer()
         fun navigateToLogin()
 
     }

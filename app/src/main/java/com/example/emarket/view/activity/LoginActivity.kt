@@ -30,7 +30,7 @@ class LoginActivity : AppCompatActivity() , LoginContract.View {
         binding.btnLogin.setOnClickListener {
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
-            presenter.checkLogin(email, password)
+            presenter.checkLoginRemote(email, password)
         }
 
         navigateToSignup()

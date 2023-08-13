@@ -36,5 +36,6 @@ data class User(
         override fun newArray(size: Int): Array<User?> {
             return arrayOfNulls(size)
         }
+
     }
 }

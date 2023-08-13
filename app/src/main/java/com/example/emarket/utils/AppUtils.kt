@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.Fragment
 import com.example.emarket.R
+import com.example.emarket.model.local.entity.User
 import com.example.emarket.view.activity.MainActivity
 
 object AppUtils {

@@ -1,6 +1,6 @@
 package com.example.emarket.presenter
 
-import android.content.Context
+import com.example.emarket.model.local.entity.User
 
 interface MainContract {
     interface View {
@@ -12,11 +12,16 @@ interface MainContract {
 
     interface Presenter{
         fun activateSplashOnDestroy()
+        fun getUserPreference() : User
+        fun logoutRemote(email: String)
 
-        fun logout()
 
 
+    }
 
+    interface LogoutCallback {
+        fun onResponse(status: Int, message: String)
+        fun onError(errorMessage: String)
     }
 
 }

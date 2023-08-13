@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.emarket.model.local.entity.User
 import com.example.emarket.model.remote.VolleyHandler
 import com.example.emarket.utils.AppUtils
+import com.example.emarket.view.ViewConstants
+import com.google.gson.Gson
 
 class LoginPresenter(private val view: LoginContract.View, private val context: Context) : LoginContract.Presenter {
     override fun checkLoginRemote(
@@ -15,6 +17,9 @@ class LoginPresenter(private val view: LoginContract.View, private val context: 
             override fun onResponse(status: Int, message: String, user: User?) {
                 if (status == 0) {
                     setLoginPreference(true)
+                    if (user != null) {
+                        setUserPreference(user)
+                    }
                     AppUtils.showToast(context, message)
                     view.navigateToProfile()
                 } else {
@@ -31,14 +36,15 @@ class LoginPresenter(private val view: LoginContract.View, private val context: 
     }
 
     override fun getLoginPreference() : Boolean {
-        val sharedPreferences = context.getSharedPreferences("ActivityPrefs", AppCompatActivity.MODE_PRIVATE)
-        return sharedPreferences.getBoolean("loggedIn", false)
+        return AppUtils.getSharedPrefsBoolean(context, ViewConstants.ACTIVITY_PREFERENCE, ViewConstants.ACTIVITY_PREFERENCE_LOGIN, false)
     }
 
     override fun setLoginPreference(loggedIn: Boolean) {
-        val sharedPreferences = context.getSharedPreferences("ActivityPrefs", AppCompatActivity.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.putBoolean("loggedIn", loggedIn)
-        editor.apply()
+        AppUtils.setSharedPrefsBoolean(context, ViewConstants.ACTIVITY_PREFERENCE, ViewConstants.ACTIVITY_PREFERENCE_LOGIN, loggedIn)
+    }
+
+    override fun setUserPreference(user: User) {
+        val userString = Gson().toJson(user)
+        AppUtils.setSharedPrefsString(context, ViewConstants.ACTIVITY_PREFERENCE, ViewConstants.ACTIVITY_PREFERENCE_USER, userString)
     }
 }

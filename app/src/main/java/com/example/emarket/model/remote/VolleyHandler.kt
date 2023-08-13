@@ -8,6 +8,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.emarket.model.local.entity.User
 import com.example.emarket.presenter.LoginContract
+import com.example.emarket.presenter.MainContract
 import com.example.emarket.presenter.SignupContract
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -105,12 +106,43 @@ object VolleyHandler {
     }
 
 
+    fun userLogout(
+        context: Context,
+        emailId: String,
+        callback: MainContract.LogoutCallback
+        ) {
+            val url = "$BASE_URL$End_POINT_USER_LOGOUT"
+            val requestQueue = Volley.newRequestQueue(context)
 
+            val userData = JSONObject().apply {
+                put("email_id", emailId)
+            }
 
+        val jsonObjectRequest = object : JsonObjectRequest(
+            Method.POST, url, userData,
+            Response.Listener { response ->
+                val status = response.getInt("status")
+                val message = response.getString("message")
+                callback.onResponse(status, message)
+            },
+            Response.ErrorListener { error ->
+                val errorMessage = error.message ?: "An error occurred"
+                callback.onError(errorMessage)
+            }) {
 
-
-
-
-
+                override fun getHeaders(): MutableMap<String, String> {
+                    return HEADER
+                }
+            }
+            requestQueue.add(jsonObjectRequest)
+    }
 
 }
+
+
+
+
+
+
+
+

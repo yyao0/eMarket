@@ -7,6 +7,7 @@ import android.view.MenuItem
 import androidx.core.view.GravityCompat
 import com.example.emarket.R
 import com.example.emarket.databinding.ActivityMainBinding
+import com.example.emarket.model.local.entity.User
 import com.example.emarket.presenter.MainContract
 import com.example.emarket.presenter.MainPresenter
 import com.example.emarket.utils.AppUtils
@@ -16,12 +17,15 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var presenter: MainPresenter
+    private lateinit var user: User
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initNavigationDrawer()
         presenter = MainPresenter(view = this, context = this)
+        user = presenter.getUserPreference()
 
 
     }
@@ -52,7 +56,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
             menuItems.isChecked=true
             when (menuItems.itemId){
                 R.id.it_profile -> AppUtils.navigateToFragment(this, R.id.main_fragment_container, ProfileFragment())
-                R.id.it_logout -> navigateToLogin()
+                R.id.it_logout -> presenter.logoutRemote(user.email)
 
             }
             true

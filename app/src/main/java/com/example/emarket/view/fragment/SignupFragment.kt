@@ -30,6 +30,17 @@ class SignupFragment : Fragment(), SignupContract.View {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.btnSignup.setOnClickListener {
+            val name = binding.etUsername.text.toString()
+            val mobile = binding.etMobile.text.toString()
+            val email = binding.etEmail.text.toString()
+            val password = binding.etPassword.text.toString()
+            presenter.checkSignupRemote(name, mobile, email, password)
+        }
+    }
+
 
 
     override fun navigateToLogin() {

@@ -1,104 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.activity.LoginActivity">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/img_logo"
-        android:layout_width="@dimen/auto_adjust"
-        android:layout_height="wrap_content"
-        android:src="@drawable/img_logo_theme_color"
-        app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintTop_toTopOf="@id/guideline2"
-        app:layout_constraintWidth_percent="@dimen/ratio_two_third" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_greet"
-        android:layout_width="@dimen/auto_adjust"
-        android:layout_height="wrap_content"
-        android:text="@string/greeting"
-        android:textSize="@dimen/greet_text_size"
-        android:fontFamily="@font/poppins_medium"
-        app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintTop_toBottomOf="@id/img_logo"
-        app:layout_constraintWidth_percent="@dimen/ratio_two_third" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="@dimen/guideline_start" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="@dimen/guideline_end" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/et_email"
-        android:layout_width="@dimen/auto_adjust"
-        android:layout_height="wrap_content"
-        android:hint="@string/email"
-        android:textSize="@dimen/login_user_input"
-        app:layout_constraintEnd_toEndOf="@id/guideline3"
-        app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintTop_toBottomOf="@id/guideline4" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/et_password"
-        android:layout_width="@dimen/auto_adjust"
-        android:layout_height="wrap_content"
-        android:hint="@string/password"
-        android:textSize="@dimen/login_user_input"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@id/guideline3"
-        app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintTop_toBottomOf="@id/et_email" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_login"
-        android:layout_width="@dimen/auto_adjust"
-        android:layout_height="wrap_content"
-        android:text="@string/signin"
-        android:layout_marginVertical="@dimen/login_button_margin"
-        android:backgroundTint="@color/colorPrimary"
-        app:layout_constraintTop_toBottomOf="@id/et_password"
-        app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintEnd_toEndOf="@id/guideline3"/>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_signup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/create_account"
-        android:textColor="@color/colorPrimary"
-        android:textSize="15sp"
-        android:layout_margin="@dimen/login_button_margin"
-        android:textStyle="bold"
-        android:clickable="true"
-        android:focusable="true"
-        app:layout_constraintTop_toBottomOf="@id/btn_login"
-        app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintEnd_toEndOf="@id/guideline3"/>
 
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.55" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.fragment.app.FragmentContainerView>

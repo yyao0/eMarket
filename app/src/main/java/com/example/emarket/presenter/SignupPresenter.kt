@@ -15,7 +15,7 @@ class SignupPresenter(private val view: SignupContract.View, private val context
         VolleyHandler.userRegister(context, fullName, mobileNo, emailId, password, object:SignupContract.ResponseCallback{
             override fun onResponse(status: Int, message: String) {
                 if (status == 0) {
-                    setLoginPreference(true)
+                    setLoginPreference(false)
                     AppUtils.showToast(context, message)
                     view.navigateToLogin()
                 } else {

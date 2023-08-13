@@ -46,10 +46,13 @@ object AppUtils {
         (context as Activity).finish()
     }
 
-    fun navigateToFragment(activity: AppCompatActivity, fragment: Fragment) {
-        val transaction = activity.supportFragmentManager.beginTransaction()
-        transaction.replace(android.R.id.content, fragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
+
+    fun navigateToFragment(activity: AppCompatActivity, container: Int, fragment: Fragment) {
+        activity.supportFragmentManager.beginTransaction()
+            .replace(container, fragment)
+            .addToBackStack(null)
+            .commit()
     }
+
+
 }

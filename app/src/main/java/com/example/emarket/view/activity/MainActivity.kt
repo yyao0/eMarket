@@ -23,10 +23,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         initNavigationDrawer()
         presenter = MainPresenter(view = this, context = this)
 
-        binding.btnLogout.setOnClickListener {
-            presenter.logout()
-            navigateToLogin()
-        }
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -54,7 +51,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         binding.nvView.setNavigationItemSelectedListener { menuItems->
             menuItems.isChecked=true
             when (menuItems.itemId){
-                R.id.it_profile -> AppUtils.navigateToFragment(this, ProfileFragment())
+                R.id.it_profile -> AppUtils.navigateToFragment(this, R.id.main_fragment_container, ProfileFragment())
                 R.id.it_logout -> navigateToLogin()
 
             }

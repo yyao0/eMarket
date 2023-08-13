@@ -15,7 +15,7 @@ import org.json.JSONObject
 
 object VolleyHandler {
 
-    const val BASE_URL = "http://localhost/myshop/index.php/"
+    const val BASE_URL = "http://192.168.0.17/myshop/index.php/"
     const val End_POINT_USER_REGISTER =  "User/register"
     const val End_POINT_USER_LOGIN =  "User/auth"
     const val End_POINT_USER_LOGOUT =  "User/logout"

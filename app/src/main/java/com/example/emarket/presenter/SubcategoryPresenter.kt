@@ -10,7 +10,7 @@ class SubcategoryPresenter(private val view: SubcategoryContract.View, private v
         VolleyHandler.getSubcategory(context, categoryId, object:SubcategoryContract.ReponseCallback{
             override fun onResponse(status: Int, message: String, subcategories: List<Subcategory>?) {
                 if (subcategories != null) {
-                    view.displaySubcategory(subcategories)
+                    view.displaySubcategoryProduct(subcategories)
                 } else {
                     AppUtils.showToast(context, message)
                 }

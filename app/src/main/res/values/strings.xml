@@ -63,4 +63,8 @@
     <string name="intro_online_shopping">Online Shopping</string>
     <string name="intro_fast_delivery">Fast Delivery</string>
     <string name="category">Category</string>
+    <string name="product_name">Samsung S21 Plus</string>
+    <string name="product_description">5G, OS: Android 10, RAM: 16 GB, Internal Storage: 256 GB, Primary Camera: 64 MP, Secondary Camera: 13 MP</string>
+    <string name="price">$ 200</string>
+    <string name="add_cart">ADD TO CART</string>
 </resources>

@@ -5,7 +5,7 @@ import com.example.emarket.model.local.entity.Subcategory
 
 interface SubcategoryContract {
     interface View {
-        fun displaySubcategory(subcategories: List<Subcategory>)
+        fun displaySubcategoryProduct(subcategories: List<Subcategory>)
         fun navigateToProduct(productFragment: Fragment)
     }
 

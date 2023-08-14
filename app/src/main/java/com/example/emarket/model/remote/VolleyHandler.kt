@@ -1,18 +1,19 @@
 package com.example.emarket.model.remote
 
 import android.content.Context
-import android.util.Log
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.emarket.model.local.entity.Category
+import com.example.emarket.model.local.entity.Product
 import com.example.emarket.model.local.entity.Subcategory
 import com.example.emarket.model.local.entity.User
 import com.example.emarket.presenter.CategoryContract
 import com.example.emarket.presenter.LoginContract
 import com.example.emarket.presenter.MainContract
+import com.example.emarket.presenter.ProductBySubcategoryContract
+import com.example.emarket.presenter.ProductDetailsContract
 import com.example.emarket.presenter.SignupContract
 import com.example.emarket.presenter.SubcategoryContract
 import com.google.gson.Gson
@@ -28,6 +29,8 @@ object VolleyHandler {
     const val End_POINT_USER_ADDRESS =  "User/address"
     const val End_POINT_CATEGORY =  "Category"
     const val End_POINT_SUBCATEGORY =  "SubCategory?category_id="
+    const val END_POINT_SUBCATEGORY_PRODUCTS = "SubCategory/products/"
+    const val END_POINT_PRODUCT_DETAILS = "Product/details/"
     val HEADER = hashMapOf( "Content-type" to "application/json")
 
     fun userRegister(
@@ -215,8 +218,56 @@ object VolleyHandler {
         requestQueue.add(jsonObjectRequest)
     }
 
+    fun getSubcategoryProducts(context: Context, subcategoryId: String, callback: ProductBySubcategoryContract.ReponseCallback) {
+        val url = "$BASE_URL$END_POINT_SUBCATEGORY_PRODUCTS$subcategoryId"
+        val requestQueue = Volley.newRequestQueue(context)
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.GET, url, null,
+            { response ->
+                val status = response.getInt("status")
+                val message = response.getString("message")
+
+                if (status == 0) {
+                    val productsArray = response.getJSONArray("products")
+                    val productsType = object : TypeToken<List<Product>>() {}.type
+                    val products = Gson().fromJson<List<Product>>(productsArray.toString(), productsType)
+                    callback.onResponse(status, message, products)
+                } else {
+                    callback.onResponse(status, message, null)
+                }
+            },
+            { error ->
+                val errorMessage = error.message ?: "An error occurred"
+                callback.onError(errorMessage)
+            })
+        requestQueue.add(jsonObjectRequest)
+    }
 
 
+    fun getProductDetails(context: Context, productId: String, callback: ProductDetailsContract.ReponseCallback) {
+        val url = "$BASE_URL$END_POINT_PRODUCT_DETAILS$productId"
+        val requestQueue = Volley.newRequestQueue(context)
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.GET, url, null,
+            { response ->
+                val status = response.getInt("status")
+                val message = response.getString("message")
+
+                if (status == 0) {
+                    val productJSON = response.getJSONObject("product")
+                    val productType = object : TypeToken<Product>() {}.type
+                    val product = Gson().fromJson<Product>(productJSON.toString(), productType)
+                    callback.onResponse(status, message, product)
+                } else {
+                    callback.onResponse(status, message, null)
+                }
+            },
+            { error ->
+                val errorMessage = error.message ?: "An error occurred"
+                callback.onError(errorMessage)
+            })
+        requestQueue.add(jsonObjectRequest)
+    }
 
 
 

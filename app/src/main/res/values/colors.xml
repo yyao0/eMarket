@@ -10,4 +10,5 @@
     <color name="textColorSecondary">#616161</color>
     <color name="transparent">#00000000</color>
     <color name="light_blue">#EDF7F9</color>
+    <color name="rating_star">#FDD835</color>
 </resources>

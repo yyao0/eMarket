@@ -15,6 +15,7 @@
     <dimen name="login_user_input">18sp</dimen>
     <dimen name="intro_image">400dp</dimen>
     <dimen name="intro_title">30sp</dimen>
+    <dimen name="product_card_margin">10dp</dimen>
     <item name="guideline_start" type="dimen" format="float">0.1</item>
     <item name="guideline_end" type="dimen" format="float">0.9</item>
     <item name="ratio_two_third" type="dimen" format="float">0.6</item>

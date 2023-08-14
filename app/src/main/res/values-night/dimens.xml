@@ -2,4 +2,5 @@
 <resources>
     <dimen name="login_user_input">18sp</dimen>
     <dimen name="intro_title">30sp</dimen>
+    <dimen name="product_card_margin">10dp</dimen>
 </resources>

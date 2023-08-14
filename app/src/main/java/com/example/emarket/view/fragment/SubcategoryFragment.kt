@@ -6,22 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.emarket.R
-import com.example.emarket.databinding.FragmentCategoryBinding
 import com.example.emarket.databinding.FragmentSubcategoryBinding
 import com.example.emarket.model.local.entity.Category
 import com.example.emarket.model.local.entity.Subcategory
 import com.example.emarket.presenter.SubcategoryContract
 import com.example.emarket.presenter.SubcategoryPresenter
-import com.example.emarket.view.adapter.SubcategoryAdapter
+import com.example.emarket.view.adapter.SubcategoryPagerAdapter
+import com.google.android.material.tabs.TabLayoutMediator
 
 
-class SubcategoryFragment : Fragment(), SubcategoryContract.View, SubcategoryAdapter.SubcategoryClickListener {
+class SubcategoryFragment : Fragment(), SubcategoryContract.View {
 
     private lateinit var binding: FragmentSubcategoryBinding
     private lateinit var category: Category
     private lateinit var presenter: SubcategoryPresenter
-    private lateinit var adapter: SubcategoryAdapter
+    private lateinit var adapter: SubcategoryPagerAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +42,19 @@ class SubcategoryFragment : Fragment(), SubcategoryContract.View, SubcategoryAda
         presenter.getSubcategoryRemote(category.categoryId)
     }
 
+    override fun displaySubcategoryProduct(subcategories: List<Subcategory>) {
+        adapter = SubcategoryPagerAdapter(subcategories, childFragmentManager, lifecycle)
+        binding.subcategoryPager.adapter = adapter
+        TabLayoutMediator(binding.subcategoryTabs, binding.subcategoryPager) {tab, position ->
+            val subcategory = subcategories[position]
+            tab.text = subcategory.name
+        }.attach()
+    }
+
+    override fun navigateToProduct(productFragment: Fragment) {
+        TODO("Not yet implemented")
+    }
+
     companion object {
 
         private const val ARG_CATEGORY = "category"
@@ -56,19 +68,10 @@ class SubcategoryFragment : Fragment(), SubcategoryContract.View, SubcategoryAda
         }
     }
 
-    override fun displaySubcategory(subcategories: List<Subcategory>) {
-        adapter = SubcategoryAdapter(subcategories, this)
-        binding.rvContainer.adapter = adapter
-        binding.rvContainer.layoutManager = GridLayoutManager(requireContext(), 2)
-    }
 
-    override fun navigateToProduct(productFragment: Fragment) {
-        TODO("Not yet implemented")
-    }
 
-    override fun onSubcategoryClick(subcategory: Subcategory) {
-        TODO("Not yet implemented")
-    }
+
+
 
 
 }

@@ -7,19 +7,16 @@
     android:orientation="vertical"
     tools:context=".view.fragment.SubcategoryFragment">
 
-    <com.google.android.material.search.SearchBar
-        android:id="@+id/search_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_container"
-        android:layout_gravity="center_horizontal"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/subcategory_tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="20dp"
-        tools:listitem="@layout/item_category"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"/>
+        app:tabGravity="fill"
+        app:tabMode="scrollable" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/subcategory_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

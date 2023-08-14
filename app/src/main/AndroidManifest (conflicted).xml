@@ -19,9 +19,6 @@
             android:name=".view.activity.IntroActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activity.SignupActivity"
-            android:exported="false" />
-        <activity
             android:name=".view.activity.SplashActivity"
             android:exported="true"
             android:label="@string/title_activity_splash"

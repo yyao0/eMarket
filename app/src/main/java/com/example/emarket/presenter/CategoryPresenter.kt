@@ -24,4 +24,5 @@ class CategoryPresenter(private val view: CategoryContract.View, private val con
 
         )
     }
+
 }

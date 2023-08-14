@@ -8,11 +8,13 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.emarket.model.local.entity.Category
+import com.example.emarket.model.local.entity.Subcategory
 import com.example.emarket.model.local.entity.User
 import com.example.emarket.presenter.CategoryContract
 import com.example.emarket.presenter.LoginContract
 import com.example.emarket.presenter.MainContract
 import com.example.emarket.presenter.SignupContract
+import com.example.emarket.presenter.SubcategoryContract
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import org.json.JSONObject
@@ -25,6 +27,7 @@ object VolleyHandler {
     const val End_POINT_USER_LOGOUT =  "User/logout"
     const val End_POINT_USER_ADDRESS =  "User/address"
     const val End_POINT_CATEGORY =  "Category"
+    const val End_POINT_SUBCATEGORY =  "SubCategory?category_id="
     val HEADER = hashMapOf( "Content-type" to "application/json")
 
     fun userRegister(
@@ -86,7 +89,11 @@ object VolleyHandler {
                 val message = response.getString("message")
                 if (response.has("user")) {
                     val userObject = response.getJSONObject("user")
-                    val user = Gson().fromJson(userObject.toString(), User::class.java)
+                    val userId = userObject.getString("user_id")
+                    val fullName = userObject.getString("full_name")
+                    val mobileNo = userObject.getString("mobile_no")
+                    val userEmail = userObject.getString("email_id")
+                    val user = User(userId, fullName, mobileNo, userEmail)
 
                     callback.onResponse(status, message, user)
                 } else {
@@ -160,7 +167,6 @@ object VolleyHandler {
                             Category(categoryId, categoryName, categoryImageUrl, isActive)
                         categoriesList.add(category)
                     }
-                    Log.i("tag", categoriesArray.toString())
                     callback.onResponse(status, message, categoriesList)
                 } else {
                     callback.onResponse(status, message, null)
@@ -174,7 +180,40 @@ object VolleyHandler {
     }
 
 
+    fun getSubcategory(context: Context, categoryId: String, callback: SubcategoryContract.ReponseCallback) {
+        val url = "$BASE_URL$End_POINT_SUBCATEGORY$categoryId"
+        val requestQueue = Volley.newRequestQueue(context)
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.GET, url, null,
+            { response ->
+                val status = response.getInt("status")
+                val message = response.getString("message")
 
+                if (status == 0) {
+                    val subcategoriesArray = response.getJSONArray("subcategories")
+                    val subcategoriesList = mutableListOf<Subcategory>()
+                    for (i in 0 until subcategoriesArray.length()) {
+                        val subcategoryObject = subcategoriesArray.getJSONObject(i)
+                        val subcategoryId = subcategoryObject.getString("subcategory_id")
+                        val subcategoryName = subcategoryObject.getString("subcategory_name")
+                        val categoryId = subcategoryObject.getString("category_id")
+                        val subcategoryImageUrl = subcategoryObject.getString("subcategory_image_url")
+                        val isActive = subcategoryObject.getString("is_active")
+
+                        val subcategory = Subcategory(subcategoryId, subcategoryName, categoryId, subcategoryImageUrl, isActive)
+                        subcategoriesList.add(subcategory)
+                    }
+                    callback.onResponse(status, message, subcategoriesList)
+                } else {
+                    callback.onResponse(status, message, null)
+                }
+            },
+            { error ->
+                val errorMessage = error.message ?: "An error occurred"
+                callback.onError(errorMessage)
+            })
+        requestQueue.add(jsonObjectRequest)
+    }
 
 
 

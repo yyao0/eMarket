@@ -5,12 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.emarket.R
 import com.example.emarket.databinding.FragmentSignupBinding
 import com.example.emarket.presenter.SignupContract
 import com.example.emarket.presenter.SignupPresenter
-import com.example.emarket.utils.AppUtils
-import com.example.emarket.view.activity.MainActivity
 
 
 class SignupFragment : Fragment(), SignupContract.View {

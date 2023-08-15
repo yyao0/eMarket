@@ -32,18 +32,15 @@
             android:layout_margin="@dimen/product_card_margin"
             app:layout_constraintStart_toEndOf="@id/iv_image"/>
 
-        <androidx.appcompat.widget.AppCompatRatingBar
-            android:id="@+id/rating_bar"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_total_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:numStars="5"
-            android:progressTint="@color/rating_star"
-            android:rating="3.5"
-            android:scaleX="0.4"
-            android:scaleY="0.4"
-            android:stepSize="0.1"
+            android:layout_margin="@dimen/product_card_margin"
+            android:text="@string/price"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/colorSecondary"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tv_name"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/tv_description"/>
 
@@ -53,9 +50,19 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/product_card_margin"
             android:text="@string/product_description"
-            app:layout_constraintTop_toBottomOf="@id/rating_bar"
+            app:layout_constraintTop_toBottomOf="@id/tv_total_price"
             app:layout_constraintStart_toEndOf="@id/iv_image"
             app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_unit_price"
+            android:layout_width="@dimen/auto_adjust"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/product_card_margin"
+            android:text="@string/unit_price"
+            android:fontFamily="@font/poppins_medium"
+            app:layout_constraintStart_toEndOf="@id/iv_image"
+            app:layout_constraintTop_toBottomOf="@id/tv_description"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_price"
@@ -65,30 +72,38 @@
             android:text="@string/price"
             android:fontFamily="@font/poppins_medium"
             android:textColor="@color/colorSecondary"
-            app:layout_constraintStart_toEndOf="@id/iv_image"
+            app:layout_constraintStart_toEndOf="@id/tv_unit_price"
             app:layout_constraintTop_toBottomOf="@id/tv_description"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_add_cart"
-            android:layout_width="@dimen/auto_adjust"
-            android:layout_height="wrap_content"
-            android:text="@string/add_cart"
-            android:textColor="@color/colorPrimaryVariant"
-            android:layout_margin="@dimen/product_card_margin"
-            android:focusable="true"
-            android:clickable="true"
-            app:layout_constraintTop_toBottomOf="@id/tv_description"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="visible"/>
 
-        <com.example.emarket.view.CartWidgetView
-            android:id="@+id/cart_counter"
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/product_card_margin"
-            app:layout_constraintTop_toBottomOf="@id/tv_description"
             app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="gone"/>
+            app:layout_constraintTop_toBottomOf="@id/tv_description">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btn_minus"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="0dp"
+                android:src="@drawable/ic_minus"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_quantity"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:text="1"/>
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btn_plus"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_plus"/>
+        </LinearLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

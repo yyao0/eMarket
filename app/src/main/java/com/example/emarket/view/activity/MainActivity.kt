@@ -11,6 +11,7 @@ import com.example.emarket.model.local.entity.User
 import com.example.emarket.presenter.MainContract
 import com.example.emarket.presenter.MainPresenter
 import com.example.emarket.utils.AppUtils
+import com.example.emarket.view.fragment.CartFragment
 import com.example.emarket.view.fragment.CategoryFragment
 import com.example.emarket.view.fragment.ProfileFragment
 
@@ -57,6 +58,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
             menuItems.isChecked=true
             when (menuItems.itemId){
                 R.id.it_profile -> AppUtils.navigateToFragment(this, R.id.main_fragment_container, ProfileFragment.newInstance(user))
+                R.id.it_cart -> AppUtils.navigateToFragment(this, R.id.main_fragment_container, CartFragment())
                 R.id.it_home -> AppUtils.navigateToFragment(this, R.id.main_fragment_container, CategoryFragment())
                 R.id.it_logout -> presenter.logoutRemote(user.email)
 

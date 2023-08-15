@@ -2,6 +2,7 @@ package com.example.emarket.view
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import com.example.emarket.databinding.QuantityWidgetBinding
@@ -19,22 +20,22 @@ class CartWidgetView(context: Context, attrs: AttributeSet) : LinearLayout(conte
         updateQuantityText()
     }
 
-    private fun decreaseQuantity() {
-        if (quantity > 1) {
+    fun decreaseQuantity() {
+        if (quantity > 0) {
             quantity--
             AppUtils.setSharedPrefsInt(context, ViewConstants.CART_PREFERENCE, productId, quantity)
             updateQuantityText()
         }
     }
 
-    private fun increaseQuantity() {
+    fun increaseQuantity() {
         quantity++
         AppUtils.setSharedPrefsInt(context, ViewConstants.CART_PREFERENCE, productId, quantity)
         updateQuantityText()
     }
 
-    private fun updateQuantityText() {
-        binding.tvQuantity.text = quantity.toString()
+    fun updateQuantityText() {
+        binding.tvQuantity.text = AppUtils.getSharedPrefsInt(context, ViewConstants.CART_PREFERENCE, productId).toString()
     }
 
     fun getQuantity(): Int {

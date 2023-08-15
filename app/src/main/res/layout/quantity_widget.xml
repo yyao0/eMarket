@@ -19,7 +19,6 @@
         android:gravity="center"
         android:textStyle="bold"
         android:text="1"/>
-
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/btn_plus"
         android:layout_width="40dp"

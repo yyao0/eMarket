@@ -6,6 +6,8 @@ import android.content.Intent
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.emarket.model.local.entity.Product
+import com.example.emarket.view.ViewConstants
 
 object AppUtils {
 
@@ -49,6 +51,11 @@ object AppUtils {
         editor.apply()
     }
 
+    fun deleteSharedPrefs(context: Context, fileName: String) {
+        val sharedPreferences = context.getSharedPreferences(fileName, AppCompatActivity.MODE_PRIVATE)
+        sharedPreferences.edit().clear().apply()
+    }
+
     fun navigateToActivity(context: Context, activity: Class<out Activity>) {
         val intent = Intent(context, activity)
         context.startActivity(intent)
@@ -62,6 +69,5 @@ object AppUtils {
             .addToBackStack(null)
             .commit()
     }
-
 
 }

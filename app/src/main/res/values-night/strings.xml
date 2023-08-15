@@ -16,4 +16,5 @@
     <string name="review_name">Prasad Pawtekar</string>
     <string name="review_date">2022-01-16 13:24:52</string>
     <string name="review_content">It\'s worth $745. Lightweight and thin. Easy to use. Mobile has fingerprint and facial recognition to unlock. Longer battery life. RAM and ROM are good. Average camera quality. Worth buying it.</string>
+    <string name="total_bill_amount">Total Bill Amount</string>
 </resources>

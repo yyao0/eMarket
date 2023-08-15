@@ -59,7 +59,7 @@ class ProductBySubcategoryFragment : Fragment(), ProductBySubcategoryContract.Vi
     }
 
     override fun displayProduct(products: List<Product>) {
-        adapter = ProductAdapter(products, this)
+        adapter = ProductAdapter(requireContext(), products, this)
         binding.rvSubcategoryProduct.adapter = adapter
         binding.rvSubcategoryProduct.layoutManager = LinearLayoutManager(requireContext())
     }

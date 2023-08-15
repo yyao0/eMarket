@@ -25,7 +25,7 @@ class ProductDetailsPresenter(private val view: ProductDetailsContract.View, pri
     }
 
      override fun updateProductQuantity(productId: String) {
-         TODO("Not yet implemented")
+
      }
 
      override fun getProductQuantity(productId: String): Int {

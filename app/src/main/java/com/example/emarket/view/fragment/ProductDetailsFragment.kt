@@ -66,17 +66,18 @@ class ProductDetailsFragment : Fragment(), ProductDetailsContract.View {
     }
 
     override fun addProductToCart() {
+        binding.cartCounter.setProduct(productId)
+        binding.cartCounter.updateQuantityText()
         val quantity = presenter.getProductQuantity(productId)
         if (quantity == 0){
         binding.tvAddCart.setOnClickListener {
             binding.tvAddCart.visibility = View.GONE
             binding.cartCounter.visibility = View.VISIBLE
-            binding.cartCounter.setProduct(productId)
+
         }
         } else {
             binding.tvAddCart.visibility = View.GONE
             binding.cartCounter.visibility = View.VISIBLE
-            binding.cartCounter.setProduct(productId)
         }
     }
 

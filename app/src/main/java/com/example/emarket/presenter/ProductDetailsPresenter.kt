@@ -4,6 +4,7 @@ import android.content.Context
 import com.example.emarket.model.local.entity.Product
 import com.example.emarket.model.remote.VolleyHandler
 import com.example.emarket.utils.AppUtils
+import com.example.emarket.view.ViewConstants
 
 class ProductDetailsPresenter(private val view: ProductDetailsContract.View, private val context: Context) : ProductDetailsContract.Presenter {
     override fun getProductDetailsRemote(productId: String) {
@@ -22,4 +23,14 @@ class ProductDetailsPresenter(private val view: ProductDetailsContract.View, pri
             }
         })
     }
+
+     override fun updateProductQuantity(productId: String) {
+         TODO("Not yet implemented")
+     }
+
+     override fun getProductQuantity(productId: String): Int {
+         return AppUtils.getSharedPrefsInt(context, ViewConstants.CART_PREFERENCE, productId, 0)
+     }
+
+
 }

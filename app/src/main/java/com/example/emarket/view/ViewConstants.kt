@@ -9,5 +9,5 @@ object ViewConstants {
     const val ACTIVITY_PREFERENCE_USER = "user"
     const val ACTIVITY_PREFERENCE_INTRO = "intro"
 
-
+    const val CART_PREFERENCE = "CartPrefs"
 }

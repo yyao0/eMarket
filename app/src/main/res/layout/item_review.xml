@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/tv_review_title"
+        android:layout_width="@dimen/auto_adjust"
+        android:layout_height="wrap_content"
+        android:text="@string/review_titles"
+        android:fontFamily="@font/poppins_medium"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatRatingBar
+        android:id="@+id/rating_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:progressTint="@color/rating_star"
+        android:rating="3.5"
+        android:scaleX="0.4"
+        android:scaleY="0.4"
+        android:stepSize="0.1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_review_title"/>
+
+    <TextView
+        android:id="@+id/tv_review_name"
+        android:layout_width="@dimen/auto_adjust"
+        android:layout_height="wrap_content"
+        android:text="@string/review_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_review_title"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_review_date"
+        android:layout_width="@dimen/auto_adjust"
+        android:layout_height="wrap_content"
+        android:text="@string/review_date"
+        android:textColor="@color/textColorSecondary"
+        app:layout_constraintTop_toBottomOf="@id/tv_review_name"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_review_content"
+        android:layout_width="@dimen/auto_adjust"
+        android:layout_height="wrap_content"
+        android:text="@string/review_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_review_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

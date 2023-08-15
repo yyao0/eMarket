@@ -25,6 +25,18 @@ object AppUtils {
         editor.apply()
     }
 
+    fun getSharedPrefsInt(context: Context, fileName: String, key: String, defVal: Int = 0) : Int {
+        val sharedPreferences = context.getSharedPreferences(fileName, AppCompatActivity.MODE_PRIVATE)
+        return sharedPreferences.getInt(key, defVal)
+    }
+
+    fun setSharedPrefsInt(context: Context, fileName: String, key: String, value: Int = 1) {
+        val sharedPreferences = context.getSharedPreferences(fileName, AppCompatActivity.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putInt(key, value)
+        editor.apply()
+    }
+
     fun getSharedPrefsString(context: Context, fileName: String, key: String, defVal: String = "") : String {
         val sharedPreferences = context.getSharedPreferences(fileName, AppCompatActivity.MODE_PRIVATE)
         return sharedPreferences.getString(key, defVal) ?: defVal

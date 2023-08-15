@@ -8,4 +8,12 @@
     <string name="product_description">5G, OS: Android 10, RAM: 16 GB, Internal Storage: 256 GB, Primary Camera: 64 MP, Secondary Camera: 13 MP</string>
     <string name="price">$ 200</string>
     <string name="add_cart">ADD TO CART</string>
+    <string name="specification">Specifications</string>
+    <string name="title">Model Name</string>
+    <string name="specification_value">OnePlus 9 Pro 5G</string>
+    <string name="review_title">Reviews</string>
+    <string name="review_titles"><![CDATA[Worthy & Best Product]]></string>
+    <string name="review_name">Prasad Pawtekar</string>
+    <string name="review_date">2022-01-16 13:24:52</string>
+    <string name="review_content">It\'s worth $745. Lightweight and thin. Easy to use. Mobile has fingerprint and facial recognition to unlock. Longer battery life. RAM and ROM are good. Average camera quality. Worth buying it.</string>
 </resources>

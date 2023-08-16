@@ -15,9 +15,6 @@ interface LoginContract {
         fun getLoginPreference() : Boolean
         fun setLoginPreference(loggedIn: Boolean)
         fun setUserPreference(user: User)
-
-
-
     }
 
     interface ResponseCallback {

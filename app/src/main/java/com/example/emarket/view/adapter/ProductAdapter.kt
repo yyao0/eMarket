@@ -38,14 +38,13 @@ class ProductAdapter(
             binding.tvPrice.text = product.price
             binding.tvDescription.text = product.description
             binding.ratingBar.rating = product.average_rating.toFloat()
-            Picasso.get().load("${BASE_IMAGE_URL}${product.product_image_url}").into(binding.ivImage)
+            Picasso.get().load("${ViewConstants.BASE_IMAGE_URL}${product.product_image_url}").into(binding.ivImage)
             val quantity = AppUtils.getSharedPrefsInt(context, ViewConstants.CART_PREFERENCE, product.product_id, 0)
             binding.cartCounter.setProduct(product.product_id)
             binding.cartCounter.updateQuantityText()
             if (quantity == 0) {
                 binding.tvAddCart.visibility = View.VISIBLE
                 binding.cartCounter.visibility = View.GONE
-
                 binding.tvAddCart.setOnClickListener {
                     AppUtils.setSharedPrefsInt(context, ViewConstants.CART_PREFERENCE, product.product_id, 1)
                     binding.tvAddCart.visibility = View.GONE
@@ -62,8 +61,5 @@ class ProductAdapter(
                 productClickListener.onProductClick(product)
             }
         }
-    }
-    companion object{
-        const val BASE_IMAGE_URL = "http://192.168.0.17/myshop/images/"
     }
 }

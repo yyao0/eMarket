@@ -15,12 +15,10 @@ class SubcategoryPresenter(private val view: SubcategoryContract.View, private v
                     AppUtils.showToast(context, message)
                 }
             }
-
             override fun onError(errorMessage: String) {
                 AppUtils.showToast(context, errorMessage)
             }
         }
-
         )
     }
 }

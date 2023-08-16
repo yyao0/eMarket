@@ -5,14 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.emarket.R
 import com.example.emarket.databinding.FragmentCartBinding
 import com.example.emarket.databinding.FragmentCategoryBinding
 import com.example.emarket.databinding.ItemProductCartBinding
+import com.example.emarket.model.local.entity.Order
 import com.example.emarket.model.local.entity.Product
 import com.example.emarket.presenter.CartContract
 import com.example.emarket.presenter.CartPresenter
+import com.example.emarket.utils.AppUtils
 import com.example.emarket.view.adapter.CartProductAdapter
 
 
@@ -21,12 +24,6 @@ class CartFragment : Fragment(), CartContract.View, CartProductAdapter.CartProdu
     private lateinit var presenter: CartPresenter
     private lateinit var adapter: CartProductAdapter
     private var products = mutableListOf<Product>()
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +39,7 @@ class CartFragment : Fragment(), CartContract.View, CartProductAdapter.CartProdu
         presenter.getProductDetailsRemote { productList ->
             displayCartProducts(productList)
         }
+        navigateToCheckout()
     }
 
     override fun displayCartProducts(products: MutableList<Product>) {
@@ -52,13 +50,13 @@ class CartFragment : Fragment(), CartContract.View, CartProductAdapter.CartProdu
         binding.tvTotalBill.text = presenter.calculateTotalBill(products).toString()
     }
 
-    override fun navigateToProduct(productFragment: Fragment) {
-        TODO("Not yet implemented")
-    }
+    override fun navigateToCheckout() {
+        binding.btnCheckout.setOnClickListener {
+            val order = presenter.createOrder(products)
+            AppUtils.navigateToFragment(requireActivity() as AppCompatActivity, R.id.main_fragment_container, CheckoutFragment.newInstance(order))
+    }}
 
     override fun onCartProductClick() {
         binding.tvTotalBill.text = presenter.calculateTotalBill(products).toString()
     }
-
-
 }

@@ -16,12 +16,10 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 
 class SubcategoryFragment : Fragment(), SubcategoryContract.View {
-
     private lateinit var binding: FragmentSubcategoryBinding
     private lateinit var category: Category
     private lateinit var presenter: SubcategoryPresenter
     private lateinit var adapter: SubcategoryPagerAdapter
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,9 +54,7 @@ class SubcategoryFragment : Fragment(), SubcategoryContract.View {
     }
 
     companion object {
-
         private const val ARG_CATEGORY = "category"
-
         fun newInstance(category: Category): SubcategoryFragment {
             val fragment = SubcategoryFragment()
             val args = Bundle()
@@ -67,11 +63,4 @@ class SubcategoryFragment : Fragment(), SubcategoryContract.View {
             return fragment
         }
     }
-
-
-
-
-
-
-
 }

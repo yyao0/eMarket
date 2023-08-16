@@ -4,7 +4,6 @@ import androidx.fragment.app.Fragment
 import com.example.emarket.model.local.entity.Category
 
 interface CategoryContract {
-
     interface View {
         fun displayCategory(categories: List<Category>)
         fun navigateToSubcategory(subcategoryFragment: Fragment)

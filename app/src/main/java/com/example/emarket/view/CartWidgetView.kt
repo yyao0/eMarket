@@ -9,7 +9,6 @@ import com.example.emarket.databinding.QuantityWidgetBinding
 import com.example.emarket.utils.AppUtils
 
 class CartWidgetView(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
-
     private var productId = "99"
     private val binding  = QuantityWidgetBinding.inflate(LayoutInflater.from(context), this, true)
     private var quantity = AppUtils.getSharedPrefsInt(context, ViewConstants.CART_PREFERENCE, productId)
@@ -36,10 +35,6 @@ class CartWidgetView(context: Context, attrs: AttributeSet) : LinearLayout(conte
 
     fun updateQuantityText() {
         binding.tvQuantity.text = AppUtils.getSharedPrefsInt(context, ViewConstants.CART_PREFERENCE, productId).toString()
-    }
-
-    fun getQuantity(): Int {
-        return quantity
     }
 
     fun setProduct(productId: String){

@@ -16,6 +16,11 @@
     <dimen name="intro_image">400dp</dimen>
     <dimen name="intro_title">30sp</dimen>
     <dimen name="product_card_margin">10dp</dimen>
+    <dimen name="cart_checkout_button_margin">30dp</dimen>
+    <dimen name="bill_title">20sp</dimen>
+    <dimen name="checkout_cart_horizontal_padding">10dp</dimen>
+    <dimen name="checkout_cart_vertical_padding">5dp</dimen>
+    <dimen name="cardview_radius">5dp</dimen>
     <item name="guideline_start" type="dimen" format="float">0.1</item>
     <item name="guideline_end" type="dimen" format="float">0.9</item>
     <item name="ratio_two_third" type="dimen" format="float">0.6</item>

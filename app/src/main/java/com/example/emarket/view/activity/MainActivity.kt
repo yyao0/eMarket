@@ -16,7 +16,6 @@ import com.example.emarket.view.fragment.CategoryFragment
 import com.example.emarket.view.fragment.ProfileFragment
 
 class MainActivity : AppCompatActivity(), MainContract.View {
-
     private lateinit var binding: ActivityMainBinding
     private lateinit var presenter: MainPresenter
     private lateinit var user: User
@@ -28,8 +27,6 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         initNavigationDrawer()
         presenter = MainPresenter(view = this, context = this)
         user = presenter.getUserPreference()
-
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -72,6 +69,4 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         startActivity(intent)
         finish()
     }
-
-
 }

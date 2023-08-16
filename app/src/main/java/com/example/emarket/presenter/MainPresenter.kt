@@ -9,7 +9,7 @@ import com.google.gson.Gson
 
 class MainPresenter(private val view: MainContract.View, private val context: Context) : MainContract.Presenter {
     override fun activateSplashOnDestroy() {
-        AppUtils.setSharedPrefsBoolean(context, "ActivityPrefs", "splash", true)
+        AppUtils.setSharedPrefsBoolean(context, ViewConstants.CHECKOUT_PREFERENCE, ViewConstants.ACTIVITY_PREFERENCE_SPLASH, true)
     }
 
     override fun getUserPreference(): User {
@@ -28,12 +28,9 @@ class MainPresenter(private val view: MainContract.View, private val context: Co
                     AppUtils.showToast(context, message)
                 }
             }
-
             override fun onError(errorMessage: String) {
                 AppUtils.showToast(context, errorMessage)
             }
         })
     }
-
-
 }

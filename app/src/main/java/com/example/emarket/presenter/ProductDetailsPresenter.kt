@@ -17,7 +17,6 @@ class ProductDetailsPresenter(private val view: ProductDetailsContract.View, pri
                     AppUtils.showToast(context, message)
                 }
             }
-
             override fun onError(errorMessage: String) {
                 AppUtils.showToast(context, errorMessage)
             }
@@ -25,12 +24,9 @@ class ProductDetailsPresenter(private val view: ProductDetailsContract.View, pri
     }
 
      override fun updateProductQuantity(productId: String) {
-
      }
 
      override fun getProductQuantity(productId: String): Int {
          return AppUtils.getSharedPrefsInt(context, ViewConstants.CART_PREFERENCE, productId, 0)
      }
-
-
 }

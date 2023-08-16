@@ -8,7 +8,6 @@ interface SignupContract {
 
     interface Presenter {
         fun checkSignupRemote(fullName: String, mobileNo: String, emailId: String, password: String,)
-
         fun setLoginPreference(loggedIn: Boolean)
     }
 
@@ -16,5 +15,4 @@ interface SignupContract {
         fun onResponse(status: Int, message: String)
         fun onError(errorMessage: String)
     }
-
 }

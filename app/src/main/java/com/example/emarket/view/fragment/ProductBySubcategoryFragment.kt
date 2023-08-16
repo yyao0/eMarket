@@ -20,7 +20,6 @@ import com.example.emarket.view.adapter.SubcategoryPagerAdapter
 
 
 class ProductBySubcategoryFragment : Fragment(), ProductBySubcategoryContract.View, ProductAdapter.ProductClickListener {
-
     private lateinit var binding: FragmentProductBySubcategoryBinding
     private lateinit var presenter: ProductBySubcategoryPresenter
     private lateinit var subcategory: Subcategory
@@ -46,18 +45,6 @@ class ProductBySubcategoryFragment : Fragment(), ProductBySubcategoryContract.Vi
         presenter.getProductRemote(subcategory.subcategoryId)
     }
 
-    companion object {
-        private const val ARG_SUBCATEGORY = "subcategory"
-
-        fun newInstance(subcategory: Subcategory): ProductBySubcategoryFragment {
-            val fragment = ProductBySubcategoryFragment()
-            val args = Bundle()
-            args.putParcelable(ARG_SUBCATEGORY, subcategory)
-            fragment.arguments = args
-            return fragment
-        }
-    }
-
     override fun displayProduct(products: List<Product>) {
         adapter = ProductAdapter(requireContext(), products, this)
         binding.rvSubcategoryProduct.adapter = adapter
@@ -71,5 +58,16 @@ class ProductBySubcategoryFragment : Fragment(), ProductBySubcategoryContract.Vi
     override fun onProductClick(product: Product) {
         val fragment = ProductDetailsFragment.newInstance(product.product_id)
         navigateToProduct(fragment)
+    }
+
+    companion object {
+        private const val ARG_SUBCATEGORY = "subcategory"
+        fun newInstance(subcategory: Subcategory): ProductBySubcategoryFragment {
+            val fragment = ProductBySubcategoryFragment()
+            val args = Bundle()
+            args.putParcelable(ARG_SUBCATEGORY, subcategory)
+            fragment.arguments = args
+            return fragment
+        }
     }
 }

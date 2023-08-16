@@ -9,12 +9,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="@dimen/auto_adjust"
             android:layout_height="wrap_content"
-            android:layout_weight="7"
+            android:layout_weight="5"
+            android:textSize="@dimen/bill_title"
+            android:fontFamily="@font/poppins_medium"
             android:text="@string/total_bill_amount"/>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -22,6 +25,9 @@
             android:layout_width="@dimen/auto_adjust"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="@dimen/bill_title"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/colorSecondary"
             android:text="@string/price"/>
     </LinearLayout>
 
@@ -30,5 +36,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:listitem="@layout/item_product_cart"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_checkout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppins_medium"
+        android:backgroundTint="@color/colorPrimary"
+        android:layout_margin="@dimen/cart_checkout_button_margin"
+        android:text="@string/checkout"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

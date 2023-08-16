@@ -39,7 +39,7 @@ class CartProductAdapter(
         fun bind(product: Product){
             binding.tvName.text = product.product_name
             binding.tvPrice.text = product.price
-            Picasso.get().load("${ProductAdapter.BASE_IMAGE_URL}${product.product_image_url}").into(binding.ivImage)
+            Picasso.get().load("${ViewConstants.BASE_IMAGE_URL}${product.product_image_url}").into(binding.ivImage)
             binding.tvDescription.text = product.description
             val quantity = AppUtils.getSharedPrefsInt(context, ViewConstants.CART_PREFERENCE, product.product_id)
             binding.tvQuantity.text = quantity.toString()
@@ -73,9 +73,5 @@ class CartProductAdapter(
 
 
         }
-    }
-
-    companion object{
-        const val BASE_IMAGE_URL = "http://192.168.0.17/myshop/images/"
     }
 }

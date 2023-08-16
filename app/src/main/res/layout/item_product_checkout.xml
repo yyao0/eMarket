@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/checkout_cart_horizontal_padding"
+    app:cardCornerRadius="10dp"
+    android:elevation="@dimen/cardview_default_elevation"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_margin="@dimen/checkout_cart_vertical_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_image"
+        android:layout_width="120dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:padding="10dp"
+        android:text="@string/product_name"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/iv_image"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_unit_price_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/unit_price"
+        android:paddingHorizontal="@dimen/checkout_cart_horizontal_padding"
+        android:paddingVertical="@dimen/checkout_cart_vertical_padding"
+        android:textColor="@color/textColorSecondary"
+        app:layout_constraintTop_toBottomOf="@id/tv_name"
+        app:layout_constraintStart_toEndOf="@id/iv_image"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_quantity_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/quantity"
+        android:paddingHorizontal="@dimen/checkout_cart_horizontal_padding"
+        android:paddingVertical="@dimen/checkout_cart_vertical_padding"
+        android:textColor="@color/textColorSecondary"
+        app:layout_constraintTop_toBottomOf="@id/tv_unit_price_title"
+        app:layout_constraintStart_toEndOf="@id/iv_image"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/amount"
+        android:paddingHorizontal="@dimen/checkout_cart_horizontal_padding"
+        android:paddingVertical="@dimen/checkout_cart_vertical_padding"
+        android:textColor="@color/textColorSecondary"
+        app:layout_constraintTop_toBottomOf="@id/tv_quantity_title"
+        app:layout_constraintStart_toEndOf="@id/iv_image"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_unit_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/price"
+        android:fontFamily="@font/poppins_medium"
+        android:paddingHorizontal="@dimen/checkout_cart_horizontal_padding"
+        android:paddingVertical="@dimen/checkout_cart_vertical_padding"
+        app:layout_constraintTop_toBottomOf="@id/tv_name"
+        app:layout_constraintStart_toEndOf="@id/guideline"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:fontFamily="@font/poppins_medium"
+        android:paddingHorizontal="@dimen/checkout_cart_horizontal_padding"
+        android:paddingVertical="@dimen/checkout_cart_vertical_padding"
+        app:layout_constraintTop_toBottomOf="@id/tv_unit_price"
+        app:layout_constraintStart_toEndOf="@id/guideline"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/price"
+        android:fontFamily="@font/poppins_medium"
+        android:paddingHorizontal="@dimen/checkout_cart_horizontal_padding"
+        android:paddingVertical="@dimen/checkout_cart_vertical_padding"
+        app:layout_constraintTop_toBottomOf="@id/tv_quantity"
+        app:layout_constraintStart_toEndOf="@id/guideline"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

@@ -93,6 +93,4 @@ class ProductDetailsFragment : Fragment(), ProductDetailsContract.View {
             return fragment
         }
     }
-
-
 }

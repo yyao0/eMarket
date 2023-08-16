@@ -3,4 +3,9 @@
     <dimen name="login_user_input">18sp</dimen>
     <dimen name="intro_title">30sp</dimen>
     <dimen name="product_card_margin">10dp</dimen>
+    <dimen name="cart_checkout_button_margin">30dp</dimen>
+    <dimen name="bill_title">20sp</dimen>
+    <dimen name="checkout_cart_horizontal_padding">10dp</dimen>
+    <dimen name="checkout_cart_vertical_padding">5dp</dimen>
+    <dimen name="cardview_radius">5dp</dimen>
 </resources>

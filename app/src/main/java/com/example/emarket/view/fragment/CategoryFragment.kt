@@ -20,7 +20,6 @@ class CategoryFragment : Fragment(), CategoryContract.View, CategoryAdapter.Cate
     private lateinit var presenter: CategoryPresenter
     private lateinit var adapter: CategoryAdapter
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,7 +33,6 @@ class CategoryFragment : Fragment(), CategoryContract.View, CategoryAdapter.Cate
         presenter = CategoryPresenter(this, requireContext())
         presenter.getCategoryRemote()
     }
-
 
     override fun displayCategory(categories: List<Category>) {
         adapter = CategoryAdapter(categories, this)
@@ -51,6 +49,4 @@ class CategoryFragment : Fragment(), CategoryContract.View, CategoryAdapter.Cate
         val fragment = SubcategoryFragment.newInstance(category)
         navigateToSubcategory(fragment)
     }
-
-
 }

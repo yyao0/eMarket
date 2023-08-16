@@ -11,18 +11,14 @@ import com.example.emarket.presenter.SignupPresenter
 
 
 class SignupFragment : Fragment(), SignupContract.View {
-
     private lateinit var binding: FragmentSignupBinding
     private lateinit var presenter: SignupPresenter
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSignupBinding.inflate(inflater, container, false)
-
         presenter = SignupPresenter(view=this, context=requireContext())
         return binding.root
     }
@@ -38,12 +34,7 @@ class SignupFragment : Fragment(), SignupContract.View {
         }
     }
 
-
-
     override fun navigateToLogin() {
         requireActivity().supportFragmentManager.popBackStack()
-
     }
-
-
 }

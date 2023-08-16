@@ -16,12 +16,10 @@ class CategoryPresenter(private val view: CategoryContract.View, private val con
                     AppUtils.showToast(context, message)
                 }
             }
-
             override fun onError(errorMessage: String) {
                 AppUtils.showToast(context, errorMessage)
             }
         }
-
         )
     }
 

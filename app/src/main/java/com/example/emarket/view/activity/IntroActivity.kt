@@ -24,18 +24,13 @@ class IntroActivity : AppCompatActivity(), IntroContract.View {
         super.onCreate(savedInstanceState)
         binding = ActivityIntroBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         presenter = IntroPresenter(view=this, context=this)
         presenter.getIntroSharedPreference(this)
-
         displayTabs()
-
-
         binding.btnSkip.setOnClickListener {
             navigateToLogin()
         }
     }
-
 
     override fun displayTabs() {
         val fragments = listOf(IntroThreeFragment(), IntroOneFragment(), IntroTwoFragment())
@@ -55,6 +50,4 @@ class IntroActivity : AppCompatActivity(), IntroContract.View {
     override fun navigateToLogin() {
         AppUtils.navigateToActivity(this, LoginActivity::class.java)
     }
-
-
 }

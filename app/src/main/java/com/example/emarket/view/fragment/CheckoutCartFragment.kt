@@ -48,8 +48,6 @@ class CheckoutCartFragment : Fragment(), CheckoutCartContract.View {
         binding.btnNext.setOnClickListener {
             val viewPager = requireActivity().findViewById<ViewPager2>(R.id.viewPager_checkout)
             viewPager.currentItem = 1
-            //AppUtils.navigateToFragmen
-        // t(requireActivity() as AppCompatActivity, R.id.viewPager_checkout, CheckoutDeliveryFragment())
         }
     }
 

@@ -24,4 +24,18 @@
     <string name="address">B4, Prabha Anand Sankul, Stadium Road, Nashik - 422101</string>
     <string name="select_address">Select Delivery Address</string>
     <string name="add_address">Add Address</string>
+    <string name="add_new_address">Add New Address</string>
+    <string name="set_address_title">Address Title</string>
+    <string name="set_address">Address</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="cash">Cash On Delivery</string>
+    <string name="banking">Internet Banking</string>
+    <string name="card">Credit Card / Debit Card</string>
+    <string name="paypal">PayPal</string>
+    <string name="select_payment">Select Payment Option</string>
+    <string name="cart_items">Cart Items</string>
+    <string name="place_order"><![CDATA[Confirm & Place Order]]></string>
+    <string name="delivery_address">Delivery Address</string>
+    <string name="payment_option">Payment Option</string>
 </resources>

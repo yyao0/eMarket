@@ -9,7 +9,8 @@ object ViewConstants {
     const val ACTIVITY_PREFERENCE_USER = "user"
     const val ACTIVITY_PREFERENCE_INTRO = "intro"
 
-    const val CART_PREFERENCE = "CartPrefs"
-
     const val CHECKOUT_PREFERENCE = "CheckoutPrefs"
+    const val CHECKOUT_PREFERENCE_ADDRESS_TITLE = "title"
+    const val CHECKOUT_PREFERENCE_ADDRESS = "address"
+    const val CHECKOUT_PREFERENCE_PAYMENT = "payment"
 }

@@ -2,8 +2,8 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="8dp"
+    app:cardCornerRadius="@dimen/_10dp"
+    app:cardElevation="@dimen/_8dp"
     android:layout_margin="@dimen/product_card_margin"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -13,8 +13,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_image"
-            android:layout_width="100dp"
-            android:layout_height="130dp"
+            android:layout_width="@dimen/_100dp"
+            android:layout_height="@dimen/_130dp"
             android:src="@drawable/ic_launcher_background"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:text="@string/product_name"
             android:fontFamily="@font/poppins_medium"
-            android:textSize="15sp"
+            android:textSize="@dimen/_15sp"
             app:layout_constraintTop_toTopOf="parent"
             android:textColor="@color/colorSecondary"
             android:layout_margin="@dimen/product_card_margin"
@@ -85,23 +85,23 @@
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/btn_minus"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="@dimen/_40dp"
+                android:layout_height="@dimen/_40dp"
                 android:padding="0dp"
                 android:src="@drawable/ic_minus"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_quantity"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="@dimen/_40dp"
+                android:layout_height="@dimen/_40dp"
                 android:textAlignment="center"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:text="1"/>
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/btn_plus"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="@dimen/_40dp"
+                android:layout_height="@dimen/_40dp"
                 android:src="@drawable/ic_plus"/>
         </LinearLayout>
 

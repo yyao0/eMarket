@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.emarket.databinding.ItemAddressBinding
 import com.example.emarket.model.local.entity.Addresse
 
-class AddressAdapter(private val addresses: List<Addresse>) : RecyclerView.Adapter<AddressAdapter.ViewHolder>() {
+class AddressAdapter(private var addresses: List<Addresse>, private val onAddressSelected: (Addresse) -> Unit) : RecyclerView.Adapter<AddressAdapter.ViewHolder>() {
+
+    private var selectedPosition = RecyclerView.NO_POSITION
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddressAdapter.ViewHolder {
         val binding = ItemAddressBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
@@ -23,6 +25,17 @@ class AddressAdapter(private val addresses: List<Addresse>) : RecyclerView.Adapt
         fun bind(address: Addresse){
             binding.tvAddressTitle.text = address.title
             binding.tvAddress.text = address.address
+            binding.radioAddress.isChecked = selectedPosition == adapterPosition
+            binding.radioAddress.setOnClickListener {
+                selectedPosition = adapterPosition
+                notifyDataSetChanged()
+                onAddressSelected(address)
+            }
+            binding.root.setOnClickListener {
+                selectedPosition = adapterPosition
+                notifyDataSetChanged()
+                onAddressSelected(address)
+            }
         }
     }
 }

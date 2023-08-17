@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="@dimen/checkout_cart_horizontal_padding"
-    app:cardCornerRadius="10dp"
+    app:cardCornerRadius="@dimen/_10dp"
     android:elevation="@dimen/cardview_default_elevation"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -14,8 +14,8 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_image"
-        android:layout_width="120dp"
-        android:layout_height="150dp"
+        android:layout_width="@dimen/_120dp"
+        android:layout_height="@dimen/_150dp"
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,9 +25,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_medium"
-        android:padding="10dp"
+        android:padding="@dimen/_10dp"
         android:text="@string/product_name"
-        android:textSize="16sp"
+        android:textSize="@dimen/_16sp"
         app:layout_constraintStart_toEndOf="@id/iv_image"
         app:layout_constraintTop_toTopOf="parent" />
 

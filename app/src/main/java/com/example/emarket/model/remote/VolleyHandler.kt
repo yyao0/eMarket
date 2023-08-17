@@ -29,6 +29,7 @@ object VolleyHandler {
     const val End_POINT_USER_LOGIN =  "User/auth"
     const val End_POINT_USER_LOGOUT =  "User/logout"
     const val End_POINT_USER_ADDRESS =  "User/addresses/"
+    const val End_POINT_ADD_ADDRESS =  "User/address"
     const val End_POINT_CATEGORY =  "Category"
     const val End_POINT_SUBCATEGORY =  "SubCategory?category_id="
     const val END_POINT_SUBCATEGORY_PRODUCTS = "SubCategory/products/"
@@ -290,7 +291,42 @@ object VolleyHandler {
             })
         requestQueue.add(jsonObjectRequest)
     }
+
+    fun addAddress(
+        context: Context,
+        userId: String,
+        title: String,
+        address: String,
+        callback: CheckoutDeliveryContract.ReponseCallback
+    ) {
+        val url = "${VolleyHandler.BASE_URL}${VolleyHandler.End_POINT_ADD_ADDRESS}"
+        val requestQueue = Volley.newRequestQueue(context)
+        val userData = JSONObject().apply {
+            put("user_id", userId)
+            put("title", title)
+            put("address", address)
+        }
+        val jsonObjectRequest = object : JsonObjectRequest(
+            Method.POST, url, userData,
+            Response.Listener { response ->
+                val status = response.getInt("status")
+                val message = response.getString("message")
+                callback.onResponse(status, message, address = null)
+            },
+            Response.ErrorListener { error ->
+                val errorMessage = error.message ?: "An error occurred"
+                callback.onError(errorMessage)
+            }) {
+
+            override fun getHeaders(): MutableMap<String, String> {
+                return VolleyHandler.HEADER
+            }
+        }
+        requestQueue.add(jsonObjectRequest)
+    }
 }
+
+
 
 
 

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="10dp"
-    app:cardCornerRadius="10dp"
-    android:elevation="8dp"
+    android:layout_margin="@dimen/_10dp"
+    app:cardCornerRadius="@dimen/_10dp"
+    android:elevation="@dimen/_8dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/_10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -38,7 +38,7 @@
             android:id="@+id/radio_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="@dimen/_10dp" />
 
     </LinearLayout>
 

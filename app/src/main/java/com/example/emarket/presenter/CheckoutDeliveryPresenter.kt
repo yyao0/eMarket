@@ -22,7 +22,6 @@ class CheckoutDeliveryPresenter(private val view: CheckoutDeliveryContract.View,
                 if (address != null) {
                     view.displayAddresses(address)
                 }else {
-                    Log.i("tag", message)
                     AppUtils.showToast(context, message)
                 }
             }
@@ -32,4 +31,22 @@ class CheckoutDeliveryPresenter(private val view: CheckoutDeliveryContract.View,
             }
         })
     }
+
+    override fun addAddress(userId: String, title: String, address: String) {
+        VolleyHandler.addAddress(context, userId, title, address, object:CheckoutDeliveryContract.ReponseCallback{
+            override fun onResponse(status: Int, message: String, address: List<Addresse>?) {
+                AppUtils.showToast(context, message)
+            }
+
+            override fun onError(errorMessage: String) {
+                AppUtils.showToast(context, errorMessage)
+            }
+        })
+    }
+
+    override fun saveSelectedAddress(address: Addresse) {
+        AppUtils.setSharedPrefsString(context, ViewConstants.CHECKOUT_PREFERENCE, ViewConstants.CHECKOUT_PREFERENCE_ADDRESS_TITLE, address.title)
+        AppUtils.setSharedPrefsString(context, ViewConstants.CHECKOUT_PREFERENCE, ViewConstants.CHECKOUT_PREFERENCE_ADDRESS, address.address)
+    }
+
 }

@@ -4,7 +4,6 @@ import com.example.emarket.model.local.entity.User
 
 interface MainContract {
     interface View {
-
         fun initNavigationDrawer()
         fun navigateToLogin()
 

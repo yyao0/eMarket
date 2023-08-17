@@ -7,7 +7,6 @@ interface ProductDetailsContract {
     interface View {
         fun displayProductDetails(product: Product)
         fun addProductToCart()
-
     }
 
     interface Presenter{

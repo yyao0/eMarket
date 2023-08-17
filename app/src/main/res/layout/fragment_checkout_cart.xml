@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".view.fragment.CheckoutCartFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_20dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="@dimen/auto_adjust"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:textSize="@dimen/bill_title"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/total_bill_amount"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_total_bill"
+            android:layout_width="@dimen/auto_adjust"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="@dimen/bill_title"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/colorSecondary"
+            android:text="@string/price"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_checkout_cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/item_product_checkout"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppins_medium"
+        android:backgroundTint="@color/colorPrimary"
+        android:layout_margin="@dimen/cart_checkout_button_margin"
+        android:text="@string/next"/>
+
+</LinearLayout>

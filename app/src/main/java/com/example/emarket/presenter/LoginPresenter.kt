@@ -27,7 +27,6 @@ class LoginPresenter(private val view: LoginContract.View, private val context: 
                     AppUtils.showToast(context, message)
                 }
             }
-
             override fun onError(errorMessage: String) {
                 setLoginPreference(false)
                 AppUtils.showToast(context, errorMessage)

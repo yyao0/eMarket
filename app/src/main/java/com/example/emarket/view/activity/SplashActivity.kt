@@ -12,10 +12,8 @@ import com.example.emarket.presenter.SplashPresenter
 import com.example.emarket.view.ViewConstants
 
 class SplashActivity : AppCompatActivity(), SplashContract.View {
-
     private lateinit var binding: ActivitySplashBinding
     private lateinit var presenter: SplashContract.Presenter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
@@ -24,8 +22,6 @@ class SplashActivity : AppCompatActivity(), SplashContract.View {
         presenter = SplashPresenter(this)
         presenter.accessSplashPreference(this)
     }
-
-
 
     override fun navigateToIntro( ) {
         val intent = Intent(this, IntroActivity::class.java)
@@ -41,6 +37,4 @@ class SplashActivity : AppCompatActivity(), SplashContract.View {
             finish()
         }, ViewConstants.SPLASH_DELAY)
     }
-
-
 }

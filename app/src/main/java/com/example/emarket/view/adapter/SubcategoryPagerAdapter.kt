@@ -18,5 +18,4 @@ class SubcategoryPagerAdapter(
         val subcategory = subcategories[position]
         return ProductBySubcategoryFragment.newInstance(subcategory)
     }
-
 }

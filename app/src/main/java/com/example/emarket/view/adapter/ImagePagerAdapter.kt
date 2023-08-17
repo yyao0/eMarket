@@ -5,17 +5,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.viewpager.widget.PagerAdapter
+import com.example.emarket.view.ViewConstants
 import com.squareup.picasso.Picasso
 
 class ImagePagerAdapter(private val context: Context, private val imageUrls: List<String>) : PagerAdapter() {
-
     override fun getCount(): Int = imageUrls.size
-
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val imageView = ImageView(context)
         imageView.scaleType = ImageView.ScaleType.FIT_CENTER
         Picasso.get()
-            .load("$BASE_IMAGE_URL${imageUrls[position]}")
+            .load("${ViewConstants.BASE_IMAGE_URL}${imageUrls[position]}")
             .into(imageView)
         container.addView(imageView)
         return imageView
@@ -27,9 +26,5 @@ class ImagePagerAdapter(private val context: Context, private val imageUrls: Lis
 
     override fun isViewFromObject(view: View, obj: Any): Boolean {
         return view == obj
-    }
-
-    companion object{
-        const val BASE_IMAGE_URL = "http://192.168.0.17/myshop/images/"
     }
 }

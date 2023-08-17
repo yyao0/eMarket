@@ -16,7 +16,6 @@ class ProductBySubcategoryPresenter(private val view: ProductBySubcategoryContra
                     AppUtils.showToast(context, message)
                 }
             }
-
             override fun onError(errorMessage: String) {
                 AppUtils.showToast(context, errorMessage)
             }

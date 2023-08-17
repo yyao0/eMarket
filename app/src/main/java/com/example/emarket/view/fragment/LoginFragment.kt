@@ -15,7 +15,6 @@ import com.example.emarket.view.activity.MainActivity
 
 
 class LoginFragment : Fragment(), LoginContract.View {
-
     private lateinit var binding: FragmentLoginBinding
     private lateinit var presenter: LoginPresenter
     override fun onCreateView(
@@ -33,13 +32,11 @@ class LoginFragment : Fragment(), LoginContract.View {
         if (loggedIn) {
             navigateToProfile()
         }
-
         binding.btnLogin.setOnClickListener {
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
             presenter.checkLoginRemote(email, password)
         }
-
         navigateToSignup()
     }
 
@@ -52,6 +49,4 @@ class LoginFragment : Fragment(), LoginContract.View {
     override fun navigateToProfile() {
         AppUtils.navigateToActivity(requireContext(), MainActivity::class.java)
     }
-
-
 }

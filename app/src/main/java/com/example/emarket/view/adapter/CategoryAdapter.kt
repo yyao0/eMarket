@@ -5,14 +5,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.emarket.databinding.ItemCategoryBinding
 import com.example.emarket.model.local.entity.Category
+import com.example.emarket.view.ViewConstants
 import com.example.emarket.view.fragment.SubcategoryFragment
 import com.squareup.picasso.Picasso
 
 class CategoryAdapter(private val categories: List<Category>, private val categoryClickListener: CategoryClickListener) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
-
     interface CategoryClickListener {
         fun onCategoryClick(category: Category)
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryAdapter.ViewHolder {
         val binding = ItemCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
@@ -28,16 +29,11 @@ class CategoryAdapter(private val categories: List<Category>, private val catego
     inner class ViewHolder(private val binding: ItemCategoryBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(category: Category){
             binding.tvName.text = category.categoryName
-            Picasso.get().load("$BASE_IMAGE_URL${category.categoryImageUrl}").into(binding.ivImage)
 
+            Picasso.get().load("${ViewConstants.BASE_IMAGE_URL}${category.categoryImageUrl}").into(binding.ivImage)
             binding.root.setOnClickListener {
                 categoryClickListener.onCategoryClick(category)
-
             }
         }
-    }
-
-    companion object{
-        const val BASE_IMAGE_URL = "http://192.168.0.17/myshop/images/"
     }
 }

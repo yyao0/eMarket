@@ -5,7 +5,6 @@ import com.example.emarket.model.remote.VolleyHandler
 import com.example.emarket.utils.AppUtils
 
 class SignupPresenter(private val view: SignupContract.View, private val context: Context) : SignupContract.Presenter {
-
     override fun checkSignupRemote(
         fullName: String,
         mobileNo: String,
@@ -23,7 +22,6 @@ class SignupPresenter(private val view: SignupContract.View, private val context
                     AppUtils.showToast(context, message)
                 }
             }
-
             override fun onError(errorMessage: String) {
                 setLoginPreference(false)
                 AppUtils.showToast(context, errorMessage)

@@ -16,7 +16,6 @@ class ProfileFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         user = arguments?.getParcelable<User>("user")
-
     }
 
     override fun onCreateView(

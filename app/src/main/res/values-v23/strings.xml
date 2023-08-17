@@ -17,4 +17,25 @@
     <string name="review_date">2022-01-16 13:24:52</string>
     <string name="review_content">It\'s worth $745. Lightweight and thin. Easy to use. Mobile has fingerprint and facial recognition to unlock. Longer battery life. RAM and ROM are good. Average camera quality. Worth buying it.</string>
     <string name="total_bill_amount">Total Bill Amount</string>
+    <string name="checkout">Checkout</string>
+    <string name="quantity">Quantity</string>
+    <string name="amount">Amount</string>
+    <string name="address_title">Home</string>
+    <string name="address">B4, Prabha Anand Sankul, Stadium Road, Nashik - 422101</string>
+    <string name="select_address">Select Delivery Address</string>
+    <string name="add_address">Add Address</string>
+    <string name="add_new_address">Add New Address</string>
+    <string name="set_address_title">Address Title</string>
+    <string name="set_address">Address</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="cash">Cash On Delivery</string>
+    <string name="banking">Internet Banking</string>
+    <string name="card">Credit Card / Debit Card</string>
+    <string name="paypal">PayPal</string>
+    <string name="select_payment">Select Payment Option</string>
+    <string name="cart_items">Cart Items</string>
+    <string name="place_order"><![CDATA[Confirm & Place Order]]></string>
+    <string name="delivery_address">Delivery Address</string>
+    <string name="payment_option">Payment Option</string>
 </resources>

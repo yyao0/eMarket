@@ -7,6 +7,7 @@ import android.view.MenuItem
 import androidx.core.view.GravityCompat
 import com.example.emarket.R
 import com.example.emarket.databinding.ActivityMainBinding
+import com.example.emarket.model.local.DatabaseHelper
 import com.example.emarket.model.local.entity.User
 import com.example.emarket.presenter.MainContract
 import com.example.emarket.presenter.MainPresenter
@@ -16,8 +17,8 @@ import com.example.emarket.view.fragment.CategoryFragment
 import com.example.emarket.view.fragment.ProfileFragment
 
 class MainActivity : AppCompatActivity(), MainContract.View {
-
     private lateinit var binding: ActivityMainBinding
+    private lateinit var dataHelper: DatabaseHelper
     private lateinit var presenter: MainPresenter
     private lateinit var user: User
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,8 +29,8 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         initNavigationDrawer()
         presenter = MainPresenter(view = this, context = this)
         user = presenter.getUserPreference()
-
-
+        initDatabase()
+        AppUtils.navigateToFragment(this, R.id.main_fragment_container, CategoryFragment())
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -61,7 +62,6 @@ class MainActivity : AppCompatActivity(), MainContract.View {
                 R.id.it_cart -> AppUtils.navigateToFragment(this, R.id.main_fragment_container, CartFragment())
                 R.id.it_home -> AppUtils.navigateToFragment(this, R.id.main_fragment_container, CategoryFragment())
                 R.id.it_logout -> presenter.logoutRemote(user.email)
-
             }
             true
         }
@@ -73,5 +73,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         finish()
     }
 
-
+    private fun initDatabase(){
+        dataHelper = DatabaseHelper(this)
+    }
 }

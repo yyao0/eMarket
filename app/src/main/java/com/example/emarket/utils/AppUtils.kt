@@ -10,7 +10,6 @@ import com.example.emarket.model.local.entity.Product
 import com.example.emarket.view.ViewConstants
 
 object AppUtils {
-
     fun showToast(context: Context, message: String) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
@@ -62,12 +61,10 @@ object AppUtils {
         (context as Activity).finish()
     }
 
-
     fun navigateToFragment(activity: AppCompatActivity, container: Int, fragment: Fragment) {
         activity.supportFragmentManager.beginTransaction()
             .replace(container, fragment)
             .addToBackStack(null)
             .commit()
     }
-
 }

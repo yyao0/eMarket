@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.emarket.R
 import com.example.emarket.databinding.FragmentProductBySubcategoryBinding
+import com.example.emarket.model.local.dao.CartDao
 import com.example.emarket.model.local.entity.Category
 import com.example.emarket.model.local.entity.Product
 import com.example.emarket.model.local.entity.Subcategory
@@ -46,7 +47,7 @@ class ProductBySubcategoryFragment : Fragment(), ProductBySubcategoryContract.Vi
     }
 
     override fun displayProduct(products: List<Product>) {
-        adapter = ProductAdapter(requireContext(), products, this)
+        adapter = ProductAdapter(products, CartDao(requireContext()), this)
         binding.rvSubcategoryProduct.adapter = adapter
         binding.rvSubcategoryProduct.layoutManager = LinearLayoutManager(requireContext())
     }
@@ -56,7 +57,7 @@ class ProductBySubcategoryFragment : Fragment(), ProductBySubcategoryContract.Vi
     }
 
     override fun onProductClick(product: Product) {
-        val fragment = ProductDetailsFragment.newInstance(product.product_id)
+        val fragment = ProductDetailsFragment.newInstance(product)
         navigateToProduct(fragment)
     }
 

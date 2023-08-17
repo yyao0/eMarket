@@ -1,6 +1,7 @@
 package com.example.emarket.presenter
 
 import android.content.Context
+import com.example.emarket.model.local.dao.CartDao
 import com.example.emarket.model.local.entity.Product
 import com.example.emarket.model.remote.VolleyHandler
 import com.example.emarket.utils.AppUtils
@@ -27,6 +28,7 @@ class ProductDetailsPresenter(private val view: ProductDetailsContract.View, pri
      }
 
      override fun getProductQuantity(productId: String): Int {
-         return AppUtils.getSharedPrefsInt(context, ViewConstants.CART_PREFERENCE, productId, 0)
+         val cartDao = CartDao(context)
+         return cartDao.getQuantityForProduct(productId)
      }
 }

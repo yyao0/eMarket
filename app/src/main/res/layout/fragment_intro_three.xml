@@ -22,8 +22,16 @@
         android:layout_marginTop="@dimen/intro_text_margin"
         android:gravity="center_horizontal"
         style="@style/IntroTitleText"
-        android:text="@string/intro_fast_delivery"
-        />
+        android:text="@string/intro_fast_delivery"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="@dimen/_15sp"
+        android:layout_marginHorizontal="@dimen/_30dp"
+        android:textColor="@color/textColorSecondary"
+        android:text="@string/intro_shipping_content" />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

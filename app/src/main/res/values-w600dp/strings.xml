@@ -38,4 +38,7 @@
     <string name="place_order"><![CDATA[Confirm & Place Order]]></string>
     <string name="delivery_address">Delivery Address</string>
     <string name="payment_option">Payment Option</string>
+    <string name="intro_online_shopping_content">Shop From the Comfort of your Home</string>
+    <string name="intro_payment_content">Enjoy Hassle-free Checkout</string>
+    <string name="intro_shipping_content">Experience our Lightning-fast Shipping Service</string>
 </resources>

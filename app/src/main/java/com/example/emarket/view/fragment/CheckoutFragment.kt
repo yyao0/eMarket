@@ -1,12 +1,10 @@
 package com.example.emarket.view.fragment
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.emarket.R
+import androidx.fragment.app.Fragment
 import com.example.emarket.databinding.FragmentCheckoutBinding
 import com.example.emarket.model.local.entity.Order
 import com.example.emarket.presenter.CheckoutContract
@@ -33,6 +31,7 @@ class CheckoutFragment : Fragment(), CheckoutContract.View {
     }
 
     override fun manageViewPager() {
+        binding.viewPagerCheckout.offscreenPageLimit = 4
         val fragmentList = arrayListOf(
             CheckoutCartFragment.newInstance(order),
             CheckoutDeliveryFragment(),

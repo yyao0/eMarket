@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
-    android:background="@color/white"
     tools:context=".view.activity.MainActivity">
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -15,7 +14,6 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar"
-            android:backgroundTint="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -38,7 +36,6 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        android:backgroundTint="@color/white"
         app:itemIconTint="@color/colorPrimary"
         app:itemTextColor="@color/colorPrimary"
         app:headerLayout="@layout/navigation_drawer_header"

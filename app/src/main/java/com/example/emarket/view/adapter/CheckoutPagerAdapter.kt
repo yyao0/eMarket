@@ -8,11 +8,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 class CheckoutPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle, private val fragmentList: List<Fragment>) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
 
-    override fun getItemCount(): Int {
-        return fragmentList.size
-    }
+    override fun getItemCount() = fragmentList.size
 
-    override fun createFragment(position: Int): Fragment {
-        return fragmentList[position]
-    }
+    override fun createFragment(position: Int) =  fragmentList[position]
 }

@@ -63,13 +63,12 @@ class CheckoutDeliveryFragment : Fragment(), CheckoutDeliveryContract.View, AddA
     override fun navigateToNext() {
         binding.btnNext.setOnClickListener {
             presenter.saveSelectedAddress(selectedAddresse)
-            //AppUtils.navigateToFragment(requireActivity() as AppCompatActivity, R.id.viewPager_checkout, CheckoutPaymentFragment())
             val viewPager = requireActivity().findViewById<ViewPager2>(R.id.viewPager_checkout)
             viewPager.currentItem = 2
         }
     }
 
-    override fun onAddressSaved(address: String, title: String) {
+    override fun onAddressSaved(title: String, address: String) {
         presenter.addAddress(userId, title, address)
         presenter.getAddressesRemote(userId)
     }

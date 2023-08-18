@@ -7,7 +7,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.emarket.model.local.entity.Product
+import com.example.emarket.model.local.entity.User
 import com.example.emarket.view.ViewConstants
+import com.google.gson.Gson
 
 object AppUtils {
     fun showToast(context: Context, message: String) {
@@ -53,6 +55,12 @@ object AppUtils {
     fun deleteSharedPrefs(context: Context, fileName: String) {
         val sharedPreferences = context.getSharedPreferences(fileName, AppCompatActivity.MODE_PRIVATE)
         sharedPreferences.edit().clear().apply()
+    }
+
+    fun getUserId(context: Context): String {
+        val userString = getSharedPrefsString(context, ViewConstants.ACTIVITY_PREFERENCE, ViewConstants.ACTIVITY_PREFERENCE_USER)
+        val user = Gson().fromJson(userString, User::class.java)
+        return user.userId
     }
 
     fun navigateToActivity(context: Context, activity: Class<out Activity>) {

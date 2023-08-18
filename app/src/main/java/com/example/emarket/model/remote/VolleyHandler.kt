@@ -12,6 +12,7 @@ import com.example.emarket.model.local.entity.Subcategory
 import com.example.emarket.model.local.entity.User
 import com.example.emarket.presenter.CategoryContract
 import com.example.emarket.presenter.CheckoutDeliveryContract
+import com.example.emarket.presenter.CheckoutSummaryContract
 import com.example.emarket.presenter.LoginContract
 import com.example.emarket.presenter.MainContract
 import com.example.emarket.presenter.ProductBySubcategoryContract
@@ -34,6 +35,7 @@ object VolleyHandler {
     const val End_POINT_SUBCATEGORY =  "SubCategory?category_id="
     const val END_POINT_SUBCATEGORY_PRODUCTS = "SubCategory/products/"
     const val END_POINT_PRODUCT_DETAILS = "Product/details/"
+    const val END_POINT_PLACE_ORDER = "Order"
     val HEADER = hashMapOf( "Content-type" to "application/json")
 
     fun userRegister(
@@ -323,6 +325,34 @@ object VolleyHandler {
             }
         }
         requestQueue.add(jsonObjectRequest)
+    }
+
+    fun placeOrder(
+        context: Context,
+        orderJson: JSONObject,
+        callback: CheckoutSummaryContract.ReponseCallback
+        ){
+        val url = "${VolleyHandler.BASE_URL}${VolleyHandler.END_POINT_PLACE_ORDER}"
+        val requestQueue = Volley.newRequestQueue(context)
+        val jsonObjectRequest = object : JsonObjectRequest(
+            Method.POST, url, orderJson,
+            Response.Listener { response ->
+                val status = response.getInt("status")
+                val message = response.getString("message")
+                val orderId = response.getInt("order_id")
+                callback.onResponse(status, message, orderId)
+            },
+            Response.ErrorListener { error ->
+                val errorMessage = error.message ?: "An error occurred"
+                callback.onError(errorMessage)
+            }) {
+
+            override fun getHeaders(): MutableMap<String, String> {
+                return VolleyHandler.HEADER
+            }
+        }
+        requestQueue.add(jsonObjectRequest)
+
     }
 }
 

@@ -4,9 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
 import com.example.emarket.R
 import com.example.emarket.databinding.ActivityMainBinding
+import com.example.emarket.databinding.NavigationDrawerHeaderBinding
 import com.example.emarket.model.local.DatabaseHelper
 import com.example.emarket.model.local.entity.User
 import com.example.emarket.presenter.MainContract
@@ -21,11 +23,12 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     private lateinit var dataHelper: DatabaseHelper
     private lateinit var presenter: MainPresenter
     private lateinit var user: User
+    private var isDarkTheme = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        toggleTheme()
         initNavigationDrawer()
         presenter = MainPresenter(view = this, context = this)
         user = presenter.getUserPreference()
@@ -65,6 +68,16 @@ class MainActivity : AppCompatActivity(), MainContract.View {
             }
             true
         }
+
+        val headerBinding = NavigationDrawerHeaderBinding.bind(binding.nvView.getHeaderView(0))
+        headerBinding.switchTheme.setOnCheckedChangeListener { buttonView, isChecked ->
+            AppCompatDelegate.setDefaultNightMode(
+            if (isChecked){
+                AppCompatDelegate.MODE_NIGHT_YES
+            } else{
+                AppCompatDelegate.MODE_NIGHT_NO
+            })
+        }
     }
 
     override fun navigateToLogin() {
@@ -73,6 +86,13 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         finish()
     }
 
+    private fun toggleTheme() {
+        if (isDarkTheme) {
+            setTheme(R.style.ThemeDark)
+        } else {
+            setTheme(R.style.ThemeLight)
+        }
+    }
     private fun initDatabase(){
         dataHelper = DatabaseHelper(this)
     }

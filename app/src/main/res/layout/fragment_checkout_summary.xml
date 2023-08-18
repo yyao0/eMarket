@@ -1,100 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.fragment.CheckoutSummaryFragment">
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/tv_cart_title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         android:textSize="@dimen/_15sp"
         android:padding="@dimen/_10dp"
         android:text="@string/cart_items" />
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_checkout_cart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_cart_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:listitem="@layout/item_product_checkout"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_bill_title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_20dp"
-        android:orientation="horizontal">
+        app:layout_constraintTop_toBottomOf="@id/rv_checkout_cart"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/bill_title"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/total_bill_amount"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="@dimen/auto_adjust"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            android:textSize="@dimen/bill_title"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/total_bill_amount"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_total_bill"
-            android:layout_width="@dimen/auto_adjust"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="@dimen/bill_title"
-            android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/colorSecondary"
-            android:text="@string/price"/>
-    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_total_bill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/rv_checkout_cart"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="@dimen/bill_title"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/colorSecondary"
+        android:text="@string/price"/>
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/tv_addresses"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_bill_title"
+        app:layout_constraintStart_toStartOf="parent"
         android:textSize="@dimen/_15sp"
         android:padding="@dimen/_10dp"
         android:text="@string/delivery_address"/>
 
     <TextView
+        android:id="@+id/tv_address_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_addresses"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/textColorSecondary"
+        android:text="@string/address_title"/>
+
+    <TextView
         android:id="@+id/tv_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_address_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:textColor="@color/textColorSecondary"
-        android:layout_marginHorizontal="@dimen/_25dp"
         android:text="@string/address"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tv_payment_title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        app:layout_constraintTop_toBottomOf="@id/tv_address"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/_15sp"
+        android:textColor="@color/textColorSecondary"
+        android:text="@string/payment_option"/>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/_15sp"
-            android:padding="@dimen/_10dp"
-            android:layout_weight="3"
-            android:layout_marginVertical="@dimen/_10dp"
-            android:text="@string/payment_option"/>
+    <TextView
+        android:id="@+id/tv_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_address"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/textColorSecondary"
+        android:text="@string/cash"/>
 
-        <TextView
-            android:id="@+id/tv_payment"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:layout_marginVertical="@dimen/_10dp"
-            android:textColor="@color/textColorSecondary"
-            android:text="@string/cash"/>
-    </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/tv_payment"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:textColor="@color/white"
         android:fontFamily="@font/poppins_medium"
         android:backgroundTint="@color/colorPrimary"
-        android:layout_margin="@dimen/cart_checkout_button_margin"
         android:text="@string/place_order"/>
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

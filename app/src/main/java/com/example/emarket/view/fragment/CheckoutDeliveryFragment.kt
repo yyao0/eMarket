@@ -45,7 +45,7 @@ class CheckoutDeliveryFragment : Fragment(), CheckoutDeliveryContract.View, AddA
     }
 
     override fun displayAddresses(addresses: List<Addresse>) {
-        adapter = AddressAdapter(addresses){address ->
+        adapter = AddressAdapter(addresses.toMutableList()){address ->
             selectedAddresse = address
         }
         binding.rvAddresses.adapter = adapter
@@ -63,14 +63,14 @@ class CheckoutDeliveryFragment : Fragment(), CheckoutDeliveryContract.View, AddA
     override fun navigateToNext() {
         binding.btnNext.setOnClickListener {
             presenter.saveSelectedAddress(selectedAddresse)
-            //AppUtils.navigateToFragment(requireActivity() as AppCompatActivity, R.id.viewPager_checkout, CheckoutPaymentFragment())
             val viewPager = requireActivity().findViewById<ViewPager2>(R.id.viewPager_checkout)
             viewPager.currentItem = 2
         }
     }
 
-    override fun onAddressSaved(address: String, title: String) {
+    override fun onAddressSaved(title: String, address: String) {
         presenter.addAddress(userId, title, address)
-        presenter.getAddressesRemote(userId)
+        adapter.insertAddress(Addresse(title=title, address = address))
     }
+
 }

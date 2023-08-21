@@ -35,15 +35,10 @@
             android:layout_width="@dimen/auto_adjust"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textColor="@color/colorPrimary"
             android:fontFamily="@font/poppins_medium"
             android:clickable="true"
             android:focusable="true"
             android:text="@string/skip_button"/>
-
-
-
-
     </LinearLayout>
 
 

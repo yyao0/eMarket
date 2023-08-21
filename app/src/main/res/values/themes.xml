@@ -5,18 +5,42 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:windowFullscreen">true</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
     <style name="Theme.EMarket" parent="Base.Theme.EMarket" />
 
     <style name="IntroTitleText">
-        <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:fontFamily">@font/poppins_bold</item>
         <item name="android:textSize">@dimen/intro_title</item>
     </style>
+
+    <style name="AppButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/button_gradient</item>
+        <item name="fontFamily">@font/poppins_semibold</item>
+    </style>
+
+    <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:singleLine">true</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="ProductTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">@dimen/_15sp</item>
+    </style>
+
+    <style name="NavigationMenuItemStyle">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">18sp</item>
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+    <style name="ThemeLight" parent="Base.Theme.EMarket"/>
 
 
 

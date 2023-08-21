@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".view.fragment.AddAddressFragment">
 
@@ -18,7 +18,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/_15sp"
+        android:textSize="@dimen/_18sp"
         android:textColor="@color/textColorSecondary"
         android:layout_marginVertical="@dimen/_10dp"
         android:layout_marginHorizontal="@dimen/_20dp"
@@ -35,9 +35,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/_15sp"
+        android:textSize="@dimen/_18sp"
         android:textColor="@color/textColorSecondary"
-        android:layout_marginVertical="@dimen/_10dp"
+        android:layout_marginTop="@dimen/_30dp"
         android:layout_marginHorizontal="@dimen/_20dp"
         android:text="@string/set_address" />
 
@@ -46,7 +46,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine|textCapSentences"
-        android:minLines="3"
+        android:minLines="5"
+        android:layout_marginVertical="@dimen/_10dp"
         android:layout_marginHorizontal="@dimen/_20dp"
         android:background="@drawable/bounding_box"/>
 
@@ -60,9 +61,9 @@
             android:id="@+id/btn_cancel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20dp"
             android:layout_weight="1"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/colorPrimary"
+            style="@style/AppButtonStyle"
             android:text="@string/cancel" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -70,8 +71,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/colorPrimary"
+            android:layout_marginStart="@dimen/_20dp"
+            style="@style/AppButtonStyle"
             android:text="@string/save" />
     </LinearLayout>
 </LinearLayout>

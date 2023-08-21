@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white"
     tools:context=".view.fragment.IntroTwoFragment">
 
 
@@ -20,10 +19,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/intro_text_margin"
+        android:textColor="#FF7892"
         android:gravity="center_horizontal"
         style="@style/IntroTitleText"
-        android:text="@string/intro_easy_payment"
-        />
+        android:text="@string/intro_easy_payment"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="@dimen/_15sp"
+        android:textColor="@color/textColorSecondary"
+        android:text="@string/intro_payment_content" />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

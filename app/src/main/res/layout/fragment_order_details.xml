@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_30dp"
+    android:scrollbarThumbVertical="@android:color/transparent"
+    android:scrollbarTrackVertical="@android:color/transparent"
+    tools:context=".view.fragment.OrderDetailsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/_30dp">
+
+    <TextView
+        android:id="@+id/tv_order_id_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/order_id_title"
+        android:textSize="@dimen/_22sp"
+        android:fontFamily="@font/poppins_semibold"
+        android:layout_marginVertical="@dimen/_10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_order_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/order_id"
+        android:textSize="@dimen/_22sp"
+        android:textColor="@color/colorSecondary"
+        android:fontFamily="@font/poppins_semibold"
+        android:layout_marginVertical="@dimen/_10dp"
+        app:layout_constraintStart_toEndOf="@id/guideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_order_status_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/order_status_title"
+        android:textSize="@dimen/_20sp"
+        android:fontFamily="@font/poppins_medium"
+        android:layout_marginVertical="@dimen/_10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_order_id_title"/>
+
+    <TextView
+        android:id="@+id/tv_order_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/status"
+        android:textSize="@dimen/_20sp"
+        android:textColor="@color/status"
+        android:fontFamily="@font/poppins_medium"
+        android:layout_marginVertical="@dimen/_10dp"
+        app:layout_constraintStart_toEndOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/tv_order_id_title"/>
+
+    <TextView
+        android:id="@+id/tv_purchased"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/purchased"
+        android:textSize="@dimen/_18sp"
+        android:layout_marginVertical="@dimen/_10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_order_status_title"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_checkout_cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_purchased"
+        tools:listitem="@layout/item_product_checkout" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_bill_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/total_bill_amount"
+        android:textSize="@dimen/_18sp"
+        android:layout_marginVertical="@dimen/_10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rv_checkout_cart" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_total_bill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/price"
+        android:textColor="@color/colorSecondary"
+        android:textSize="@dimen/_18sp"
+        android:layout_margin="@dimen/_10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rv_checkout_cart" />
+
+    <TextView
+        android:id="@+id/tv_addresses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/delivery_address"
+        android:textSize="@dimen/_18sp"
+        android:layout_marginVertical="@dimen/_10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_bill_title" />
+
+    <TextView
+        android:id="@+id/tv_address_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/address_title"
+        android:textSize="@dimen/_15sp"
+        android:layout_margin="@dimen/_5dp"
+        android:textColor="@color/textColorSecondary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_addresses" />
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/address"
+        android:textColor="@color/textColorSecondary"
+        android:textSize="@dimen/_15sp"
+        android:layout_margin="@dimen/_5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_address_title" />
+
+    <TextView
+        android:id="@+id/tv_payment_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/payment_method"
+        android:textSize="@dimen/_18sp"
+        android:layout_marginVertical="@dimen/_10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_address" />
+
+    <TextView
+        android:id="@+id/tv_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cash"
+        android:textColor="@color/textColorSecondary"
+        android:textSize="@dimen/_15sp"
+        android:layout_margin="@dimen/_10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_address" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

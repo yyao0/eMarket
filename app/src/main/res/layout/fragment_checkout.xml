@@ -1,20 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".view.fragment.CheckoutFragment">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout_checkout"
+    <com.shuhart.stepview.StepView
+        android:id="@+id/stepview_checkout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        app:sv_selectedCircleColor="@color/colorSecondary"
+        app:sv_selectedTextColor="#3A1414"
+        app:sv_stepLineWidth="2dp"
+        app:sv_stepPadding="4dp"
+        app:sv_nextTextColor="#3A1414"
+        app:sv_nextStepLineColor="#3A1414"
+        app:sv_doneCircleColor="#3A1414"
+        app:sv_doneStepLineColor="#3A1414"
+        app:sv_doneCircleRadius="18dp"
+        app:sv_selectedCircleRadius="18dp"
+        app:sv_selectedStepNumberColor="@color/colorPrimary"
+        app:sv_stepViewStyle="@style/StepView"
+        app:sv_doneStepMarkColor="@color/colorPrimary"
+        app:sv_stepNumberTextSize="18sp"
+        app:sv_animationType="Line"/>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager_checkout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-</LinearLayout>
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+</androidx.appcompat.widget.LinearLayoutCompat>

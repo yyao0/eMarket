@@ -16,8 +16,8 @@
             android:layout_width="@dimen/auto_adjust"
             android:layout_height="wrap_content"
             android:layout_weight="5"
-            android:textSize="@dimen/bill_title"
-            android:fontFamily="@font/poppins_medium"
+            android:textSize="@dimen/_22sp"
+            android:fontFamily="@font/poppins_semibold"
             android:text="@string/total_bill_amount"/>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -25,7 +25,7 @@
             android:layout_width="@dimen/auto_adjust"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="@dimen/bill_title"
+            android:textSize="@dimen/_22sp"
             android:fontFamily="@font/poppins_medium"
             android:textColor="@color/colorSecondary"
             android:text="@string/price"/>
@@ -39,12 +39,10 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_checkout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textColor="@color/white"
-        android:fontFamily="@font/poppins_medium"
-        android:backgroundTint="@color/colorPrimary"
+        style="@style/AppButtonStyle"
         android:layout_margin="@dimen/cart_checkout_button_margin"
         android:text="@string/checkout"/>
 

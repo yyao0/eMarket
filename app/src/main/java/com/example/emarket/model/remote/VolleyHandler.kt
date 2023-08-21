@@ -1,19 +1,24 @@
 package com.example.emarket.model.remote
 
 import android.content.Context
+import android.util.Log
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.emarket.model.local.entity.Addresse
 import com.example.emarket.model.local.entity.Category
+import com.example.emarket.model.local.entity.Order
 import com.example.emarket.model.local.entity.Product
 import com.example.emarket.model.local.entity.Subcategory
 import com.example.emarket.model.local.entity.User
 import com.example.emarket.presenter.CategoryContract
 import com.example.emarket.presenter.CheckoutDeliveryContract
+import com.example.emarket.presenter.CheckoutSummaryContract
 import com.example.emarket.presenter.LoginContract
 import com.example.emarket.presenter.MainContract
+import com.example.emarket.presenter.OrderDetailsContract
+import com.example.emarket.presenter.OrdersContract
 import com.example.emarket.presenter.ProductBySubcategoryContract
 import com.example.emarket.presenter.ProductDetailsContract
 import com.example.emarket.presenter.SignupContract
@@ -34,6 +39,10 @@ object VolleyHandler {
     const val End_POINT_SUBCATEGORY =  "SubCategory?category_id="
     const val END_POINT_SUBCATEGORY_PRODUCTS = "SubCategory/products/"
     const val END_POINT_PRODUCT_DETAILS = "Product/details/"
+    const val END_POINT_PLACE_ORDER = "Order"
+    const val END_POINT_ORDERS = "Order/userOrders/"
+    const val END_POINT_ORDER_DETAILS = "Order?order_id="
+    const val END_POINT_SEARCH_PRODUCT = "Product/search?query="
     val HEADER = hashMapOf( "Content-type" to "application/json")
 
     fun userRegister(
@@ -150,7 +159,7 @@ object VolleyHandler {
             requestQueue.add(jsonObjectRequest)
     }
 
-    fun getCategory(context: Context, callback: CategoryContract.ReponseCallback) {
+    fun getCategory(context: Context, callback: CategoryContract.CategoryCallback) {
         val url = "$BASE_URL$End_POINT_CATEGORY"
         val requestQueue = Volley.newRequestQueue(context)
         val jsonObjectRequest = JsonObjectRequest(
@@ -322,6 +331,106 @@ object VolleyHandler {
                 return VolleyHandler.HEADER
             }
         }
+        requestQueue.add(jsonObjectRequest)
+    }
+
+    fun placeOrder(
+        context: Context,
+        orderJson: JSONObject,
+        callback: CheckoutSummaryContract.ReponseCallback
+        ){
+        val url = "${VolleyHandler.BASE_URL}${VolleyHandler.END_POINT_PLACE_ORDER}"
+        val requestQueue = Volley.newRequestQueue(context)
+        val jsonObjectRequest = object : JsonObjectRequest(
+            Method.POST, url, orderJson,
+            Response.Listener { response ->
+                val status = response.getInt("status")
+                val message = response.getString("message")
+                val orderId = response.getInt("order_id")
+                callback.onResponse(status, message, orderId)
+            },
+            Response.ErrorListener { error ->
+                val errorMessage = error.message ?: "An error occurred"
+                callback.onError(errorMessage)
+            }) {
+
+            override fun getHeaders(): MutableMap<String, String> {
+                return VolleyHandler.HEADER
+            }
+        }
+        requestQueue.add(jsonObjectRequest)
+    }
+
+    fun getOrdersByUser(context: Context, userId: String, callback: OrdersContract.ResponseCallback) {
+        val url = "$BASE_URL$END_POINT_ORDERS$userId"
+        val requestQueue = Volley.newRequestQueue(context)
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.GET, url, null,
+            { response ->
+                val status = response.getInt("status")
+                val message = response.getString("message")
+                if (status == 0) {
+                    val ordersArray = response.getJSONArray("orders")
+                    val ordersType = object : TypeToken<List<Order>>() {}.type
+                    val orders = Gson().fromJson<List<Order>>(ordersArray.toString(), ordersType)
+                    callback.onResponse(status, message, orders)
+                } else {
+                    callback.onResponse(status, message, null)
+                }
+            },
+            { error ->
+                val errorMessage = error.message ?: "An error occurred"
+                callback.onError(errorMessage)
+            })
+        requestQueue.add(jsonObjectRequest)
+    }
+
+    fun getOrderDetails(context: Context, orderId: String, callback: OrderDetailsContract.ResponseCallback){
+        val url = "$BASE_URL$END_POINT_ORDER_DETAILS$orderId"
+        val requestQueue = Volley.newRequestQueue(context)
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.GET, url, null,
+            { response ->
+                val status = response.getInt("status")
+                val message = response.getString("message")
+                if (status == 0) {
+                    val orderJSON = response.getJSONObject("order")
+                    val orderType = object : TypeToken<Order>() {}.type
+                    val order = Gson().fromJson<Order>(orderJSON.toString(), orderType)
+                    callback.onResponse(status, message, order)
+                } else {
+                    callback.onResponse(status, message, null)
+                }
+            },
+            { error ->
+                val errorMessage = error.message ?: "An error occurred"
+                callback.onError(errorMessage)
+            })
+        requestQueue.add(jsonObjectRequest)
+    }
+
+    fun getSearchResult(context: Context, keyword: String, callback: CategoryContract.ProductCallback) {
+        val url = "$BASE_URL$END_POINT_SEARCH_PRODUCT$keyword"
+        val requestQueue = Volley.newRequestQueue(context)
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.GET, url, null,
+            { response ->
+                val status = response.getInt("status")
+                val message = response.getString("message")
+                Log.i("tag", response.toString())
+                if (status == 0) {
+                    val productsArray = response.getJSONArray("products")
+                    val productsType = object : TypeToken<List<Product>>() {}.type
+                    val products = Gson().fromJson<List<Product>>(productsArray.toString(), productsType)
+                    callback.onResponse(status, message, products)
+                } else {
+                    callback.onResponse(status, message, null)
+                }
+            },
+            { error ->
+                val errorMessage = error.message ?: "An error occurred"
+                callback.onError(errorMessage)
+            })
         requestQueue.add(jsonObjectRequest)
     }
 }

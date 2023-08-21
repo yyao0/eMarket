@@ -18,6 +18,8 @@ class SplashActivity : AppCompatActivity(), SplashContract.View {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.ivLogo.alpha = 0f
+        binding.ivLogo.animate().alpha(1f).setDuration(ViewConstants.SPLASH_ANIMATION)
 
         presenter = SplashPresenter(this)
         presenter.accessSplashPreference(this)

@@ -7,19 +7,19 @@
     android:orientation="vertical"
     tools:context=".view.fragment.CategoryFragment">
 
-    <com.google.android.material.search.SearchBar
+    <androidx.appcompat.widget.SearchView
         android:id="@+id/search_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_30dp"
+        app:queryHint="@string/search"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_container"
         android:layout_gravity="center_horizontal"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingHorizontal="@dimen/_20dp"
-        tools:listitem="@layout/item_category"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"/>
+        tools:listitem="@layout/item_category"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

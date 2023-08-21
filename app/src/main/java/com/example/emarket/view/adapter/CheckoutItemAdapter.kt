@@ -28,8 +28,8 @@ class CheckoutItemAdapter(private val items: List<Item>) : RecyclerView.Adapter<
         fun bind(item: Item){
             binding.tvName.text = item.product_name
             binding.tvQuantity.text = item.quantity
-            binding.tvAmount.text = item.amount
-            binding.tvUnitPrice.text = item.unit_price
+            binding.tvAmount.text = "$ ${item.amount}"
+            binding.tvUnitPrice.text = "$ ${item.unit_price}"
             Picasso.get().load("${ViewConstants.BASE_IMAGE_URL}${item.product_image_url}").into(binding.ivImage)
         }
     }

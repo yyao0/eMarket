@@ -41,7 +41,7 @@ class ProductAdapter(
         }
         fun bind(product: Product){
             binding.tvName.text = product.product_name
-            binding.tvPrice.text = product.price
+            binding.tvPrice.text = "$ ${product.price}"
             binding.tvDescription.text = product.description
             binding.ratingBar.rating = product.average_rating.toFloat()
             Picasso.get().load("${ViewConstants.BASE_IMAGE_URL}${product.product_image_url}").into(binding.ivImage)

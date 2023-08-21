@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.emarket.databinding.ItemAddressBinding
 import com.example.emarket.model.local.entity.Addresse
 
-class AddressAdapter(private var addresses: List<Addresse>, private val onAddressSelected: (Addresse) -> Unit) : RecyclerView.Adapter<AddressAdapter.ViewHolder>() {
+class AddressAdapter(private var addresses: MutableList<Addresse>, private val onAddressSelected: (Addresse) -> Unit) : RecyclerView.Adapter<AddressAdapter.ViewHolder>() {
 
     private var selectedPosition = RecyclerView.NO_POSITION
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddressAdapter.ViewHolder {
@@ -20,6 +20,11 @@ class AddressAdapter(private var addresses: List<Addresse>, private val onAddres
     }
 
     override fun getItemCount() = addresses.size
+
+    fun insertAddress(address: Addresse){
+        addresses.add(address)
+        notifyDataSetChanged()
+    }
 
     inner class ViewHolder(private val binding: ItemAddressBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(address: Addresse){

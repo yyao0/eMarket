@@ -43,6 +43,14 @@
     <dimen name="_150dp">150dp</dimen>
     <dimen name="_16sp">16sp</dimen>
     <dimen name="_80dp">80dp</dimen>
+    <dimen name="_50dp">50dp</dimen>
+    <dimen name="_60dp">60dp</dimen>
+    <dimen name="_5dp">5dp</dimen>
+    <dimen name="cart_img">40dp</dimen>
+    <dimen name="_22sp">22sp</dimen>
+    <dimen name="_2dp">2dp</dimen>
+    <dimen name="_1dp">1dp</dimen>
+    <dimen name="_70dp">70dp</dimen>
     <item name="guideline_start" type="dimen" format="float">0.1</item>
     <item name="guideline_end" type="dimen" format="float">0.9</item>
     <item name="ratio_two_third" type="dimen" format="float">0.6</item>

@@ -18,7 +18,6 @@ class ProfileFragment : Fragment(), ProfileContract.View {
     private lateinit var presenter: ProfilePresenter
     private var user: User? = null
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,6 +34,7 @@ class ProfileFragment : Fragment(), ProfileContract.View {
         user = presenter.getUser()
         user?.let { displayUser(it) }
         navigateToOrders()
+        navigateToAddress()
     }
 
     override fun displayUser(user: User) {
@@ -55,5 +55,14 @@ class ProfileFragment : Fragment(), ProfileContract.View {
         }
     }
 
-
+    override fun navigateToAddress() {
+        binding.btnAddress.setOnClickListener {
+            AppUtils.navigateToFragment(
+                requireActivity() as AppCompatActivity,
+                R.id.main_fragment_container,
+                AddressFragment()
+            )
+        }
+    }
 }
+

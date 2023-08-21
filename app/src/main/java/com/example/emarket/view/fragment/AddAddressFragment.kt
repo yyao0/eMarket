@@ -22,8 +22,8 @@ class AddAddressFragment : DialogFragment() {
     override fun onStart() {
         super.onStart()
         dialog?.window?.apply {
-            val width = (resources.displayMetrics.widthPixels * 0.8).toInt()
-            val height = (resources.displayMetrics.heightPixels * 0.8).toInt()
+            val width = (resources.displayMetrics.widthPixels * 0.9).toInt()
+            val height = (resources.displayMetrics.heightPixels * 0.7).toInt()
             setLayout(width, height)
         }
     }

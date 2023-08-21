@@ -10,6 +10,8 @@
     tools:context=".view.fragment.CheckoutSummaryFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginHorizontal="@dimen/_30dp"
+        android:paddingBottom="@dimen/_30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -19,8 +21,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:textSize="@dimen/_15sp"
-            android:padding="@dimen/_10dp"
+            android:textSize="@dimen/_18sp"
+            android:layout_marginVertical="@dimen/_10dp"
             android:text="@string/cart_items" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -38,8 +40,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/rv_checkout_cart"
             app:layout_constraintStart_toStartOf="parent"
-            android:textSize="@dimen/bill_title"
-            android:fontFamily="@font/poppins_medium"
+            android:textSize="@dimen/_18sp"
+            android:layout_marginVertical="@dimen/_10dp"
             android:text="@string/total_bill_amount"/>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -48,9 +50,10 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/rv_checkout_cart"
             app:layout_constraintEnd_toEndOf="parent"
-            android:textSize="@dimen/bill_title"
             android:fontFamily="@font/poppins_medium"
             android:textColor="@color/colorSecondary"
+            android:textSize="@dimen/_18sp"
+            android:layout_margin="@dimen/_10dp"
             android:text="@string/price"/>
 
         <TextView
@@ -59,8 +62,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/tv_bill_title"
             app:layout_constraintStart_toStartOf="parent"
-            android:textSize="@dimen/_15sp"
-            android:padding="@dimen/_10dp"
+            android:textSize="@dimen/_18sp"
+            android:layout_marginVertical="@dimen/_10dp"
             android:text="@string/delivery_address"/>
 
         <TextView
@@ -69,6 +72,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/tv_addresses"
             app:layout_constraintStart_toStartOf="parent"
+            android:textSize="@dimen/_15sp"
+            android:layout_margin="@dimen/_5dp"
             android:textColor="@color/textColorSecondary"
             android:text="@string/address_title"/>
 
@@ -80,6 +85,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/textColorSecondary"
+            android:textSize="@dimen/_15sp"
+            android:layout_margin="@dimen/_5dp"
             android:text="@string/address"/>
 
         <TextView
@@ -88,8 +95,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/tv_address"
             app:layout_constraintStart_toStartOf="parent"
-            android:textSize="@dimen/_15sp"
-            android:textColor="@color/textColorSecondary"
+            android:textSize="@dimen/_18sp"
+            android:layout_marginVertical="@dimen/_10dp"
             android:text="@string/payment_option"/>
 
         <TextView
@@ -99,6 +106,8 @@
             app:layout_constraintTop_toBottomOf="@id/tv_address"
             app:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/textColorSecondary"
+            android:textSize="@dimen/_15sp"
+            android:layout_margin="@dimen/_10dp"
             android:text="@string/cash"/>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -109,7 +118,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             style="@style/AppButtonStyle"
-            android:layout_marginHorizontal="@dimen/_30dp"
+            android:layout_margin="@dimen/_20dp"
             android:text="@string/place_order"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

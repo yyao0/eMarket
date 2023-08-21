@@ -6,6 +6,7 @@ interface ProfileContract {
     interface View{
         fun displayUser(user: User)
         fun navigateToOrders()
+        fun navigateToAddress()
     }
     interface Presenter{
         fun getUser(): User

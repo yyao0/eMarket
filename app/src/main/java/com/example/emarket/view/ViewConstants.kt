@@ -2,6 +2,7 @@ package com.example.emarket.view
 
 object ViewConstants {
     const val SPLASH_DELAY = 4000L
+    const val SPLASH_ANIMATION = 3000L
     const val BASE_IMAGE_URL = "http://192.168.0.17/myshop/images/"
     const val ACTIVITY_PREFERENCE = "ActivityPrefs"
     const val ACTIVITY_PREFERENCE_SPLASH = "splash"

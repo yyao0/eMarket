@@ -20,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/intro_text_margin"
+        android:textColor="#FFA556"
         android:gravity="center_horizontal"
         style="@style/IntroTitleText"
         android:text="@string/intro_fast_delivery"/>

@@ -21,6 +21,7 @@
         android:layout_marginTop="@dimen/intro_text_margin"
         android:gravity="center_horizontal"
         style="@style/IntroTitleText"
+        android:textColor="#C091F7"
         android:text="@string/intro_online_shopping" />
 
     <TextView

@@ -12,7 +12,6 @@
     <style name="Theme.EMarket" parent="Base.Theme.EMarket" />
 
     <style name="IntroTitleText">
-        <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:fontFamily">@font/poppins_bold</item>
         <item name="android:textSize">@dimen/intro_title</item>
     </style>

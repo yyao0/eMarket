@@ -33,7 +33,7 @@ class IntroActivity : AppCompatActivity(), IntroContract.View {
     }
 
     override fun displayTabs() {
-        val fragments = listOf(IntroThreeFragment(), IntroOneFragment(), IntroTwoFragment())
+        val fragments = listOf(IntroOneFragment(), IntroTwoFragment(), IntroThreeFragment())
         viewpagerAdapter = IntroPagerAdapter(
             fragments,
             this@IntroActivity

@@ -33,6 +33,12 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         initNavigationDrawer()
         presenter = MainPresenter(view = this, context = this)
         user = presenter.getUserPreference()
+        val headerBinding = NavigationDrawerHeaderBinding.bind(binding.nvView.getHeaderView(0))
+        if (this::user.isInitialized){
+            headerBinding.tvHeaderName.text = user.fullName
+            headerBinding.tvHeaderEmail.text = user.email
+            headerBinding.tvHeaderMobile.text = user.mobileNo
+        }
         initDatabase()
         AppUtils.navigateToFragment(this, R.id.main_fragment_container, CategoryFragment())
     }

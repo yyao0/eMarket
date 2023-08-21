@@ -1,139 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".view.fragment.ProductDetailsFragment">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/product_name"
-        android:padding="@dimen/_20dp"
-        android:textColor="@color/colorSecondary"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <androidx.appcompat.widget.AppCompatRatingBar
-        android:id="@+id/rating_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:numStars="5"
-        android:progressTint="@color/rating_star"
-        android:rating="3.5"
-        android:scaleX="0.4"
-        android:scaleY="0.4"
-        android:stepSize="0.1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tv_name"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_description"
-        android:layout_width="@dimen/auto_adjust"
-        android:layout_height="wrap_content"
-        android:text="@string/product_description"
-        app:layout_constraintTop_toBottomOf="@id/rating_bar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/vp_image"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_250dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_description"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <me.relex.circleindicator.CircleIndicator
-        android:id="@+id/circle_indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/vp_image"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:ci_drawable="@drawable/indicator_item" />
-
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/price"
-        android:textSize="@dimen/_20sp"
-        android:layout_margin="@dimen/_20dp"
-        android:textColor="@color/colorSecondary"
-        android:fontFamily="@font/poppins_medium"
-        app:layout_constraintTop_toBottomOf="@id/circle_indicator"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-
-   <androidx.appcompat.widget.AppCompatTextView
-       android:id="@+id/tv_add_cart"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="@string/add_cart"
-       android:focusable="true"
-       android:clickable="true"
-       android:textColor="@color/colorPrimary"
-       android:fontFamily="@font/poppins_medium"
-       android:textSize="@dimen/_20sp"
-       android:layout_margin="@dimen/_20dp"
-       app:layout_constraintTop_toBottomOf="@id/circle_indicator"
-       app:layout_constraintEnd_toEndOf="parent"
-       android:visibility="visible"/>
-
-
-    <com.example.emarket.view.CartWidgetView
-        android:id="@+id/cart_counter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/circle_indicator"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="@dimen/_20dp"
-        android:visibility="gone"/>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_specification_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/specification"
-        android:layout_margin="@dimen/_20dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_price"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_specifications"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_35dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_specification_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/item_specification"/>
+        android:layout_weight="1">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_name"
+                android:layout_margin="@dimen/_20dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:textSize="@dimen/_22sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
-    <TextView
-        android:id="@+id/tv_review_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/review_title"
-        app:layout_constraintTop_toBottomOf="@id/rv_specifications"
-        app:layout_constraintStart_toStartOf="parent"/>
+            <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                android:id="@+id/rating_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                app:mrb_progressTint="@color/rating_star"
+                app:mrb_fillBackgroundStars="true"
+                android:rating="3.5"
+                android:maxHeight="@dimen/_20dp"
+                android:minHeight="@dimen/_20dp"
+                android:maxWidth="@dimen/_40dp"
+                android:minWidth="@dimen/_40dp"
+                android:stepSize="0.1"
+                android:layout_marginTop="@dimen/_25dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_name"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_reviews"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_description"
+                android:layout_width="@dimen/auto_adjust"
+                android:layout_height="wrap_content"
+                android:text="@string/product_description"
+                android:layout_margin="@dimen/_20dp"
+                android:textColor="@color/textColorSecondary"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="@dimen/_18sp"
+                app:layout_constraintTop_toBottomOf="@id/tv_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/vp_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_250dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_description"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <me.relex.circleindicator.CircleIndicator
+                android:id="@+id/circle_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/vp_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:ci_drawable="@drawable/indicator_item" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabGravity="center"
+                android:layout_margin="@dimen/_20dp"
+                app:tabTextAppearance="@style/ProductTabTextAppearance"
+                app:layout_constraintTop_toBottomOf="@id/circle_indicator"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_specifications"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_35dp"
+                android:paddingTop="@dimen/_20dp"
+                android:paddingBottom="@dimen/_40dp"
+                app:layout_constraintTop_toBottomOf="@id/tabs_details"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:listitem="@layout/item_specification"
+                android:visibility="visible"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_reviews"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tabs_details"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:paddingTop="@dimen/_20dp"
+                android:paddingBottom="@dimen/_70dp"
+                tools:listitem="@layout/item_review"
+                android:visibility="gone"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_review_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/item_review"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+        android:backgroundTint="@color/transparent"
+        app:cardElevation="@dimen/_2dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_40dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/price"
+                android:textColor="@color/colorSecondary"
+                android:textSize="@dimen/_25sp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/tv_add_cart"
+                style="@style/AppButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginHorizontal="@dimen/_30dp"
+                android:layout_marginVertical="@dimen/_20dp"
+                android:paddingHorizontal="@dimen/_30dp"
+                android:text="@string/add_cart"
+                android:visibility="visible" />
+            <com.example.emarket.view.CartWidgetView
+                android:id="@+id/cart_counter"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="@dimen/_20dp"
+                android:visibility="gone"/>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.appcompat.widget.LinearLayoutCompat>

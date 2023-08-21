@@ -40,18 +40,18 @@ class CartProductAdapter(
     inner class ViewHolder(private val binding: ItemProductCartBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(item: Item){
             binding.tvName.text = item.product_name
-            binding.tvPrice.text = item.unit_price
+            binding.tvPrice.text = "$ ${item.unit_price}"
             Picasso.get().load("${ViewConstants.BASE_IMAGE_URL}${item.product_image_url}").into(binding.ivImage)
             binding.tvDescription.text = item.description
             val quantity = cartDao.getQuantityForProduct(item.product_id)
             binding.tvQuantity.text = quantity.toString()
             val totalPrice = item.unit_price.toInt() * quantity
-            binding.tvTotalPrice.text = totalPrice.toString()
+            binding.tvTotalPrice.text = "$ $totalPrice"
             binding.btnPlus.setOnClickListener {
                 cartDao.updateQuantityForProduct(item.product_id, 1)
                 val quantity = cartDao.getQuantityForProduct(item.product_id)
                 val totalPrice = item.unit_price.toInt() * quantity
-                binding.tvTotalPrice.text = totalPrice.toString()
+                binding.tvTotalPrice.text = "$ $totalPrice"
                 binding.tvQuantity.text = quantity.toString()
                 cartProductClickListener.onCartProductClick()
             }
@@ -60,7 +60,7 @@ class CartProductAdapter(
                 if (quantity > 1) {
                     quantity -= 1
                     val totalPrice = item.unit_price.toInt() * quantity
-                    binding.tvTotalPrice.text = totalPrice.toString()
+                    binding.tvTotalPrice.text = "$ $totalPrice"
                     binding.tvQuantity.text = quantity.toString()
                     cartDao.updateQuantityForProduct(item.product_id, -1)
                     cartProductClickListener.onCartProductClick()

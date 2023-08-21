@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#177885</color>
+    <color name="colorPrimaryVariant">#1D7281</color>
+    <!-- Accent colors -->
+    <color name="colorAccent">#FFA500</color>
+    <!-- Secondary color -->
+    <color name="colorSecondary">#FFD700</color>
+    <!-- Text colors -->
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="textColorSecondary">#A0A0A0</color>
+    <!-- Background colors -->
+    <color name="windowBackground">#232323</color>
+    <color name="colorBackground">#2E2E2E</color>
+    <!-- Button colors -->
+    <color name="colorButtonNormal">#0E4C5A</color>
+    <color name="colorControlHighlight">#1D7281</color>
+    <!-- StatusBar and NavigationBar colors (Lollipop and above) -->
+    <color name="statusBarColor">#232323</color>
+    <color name="navigationBarColor">#232323</color>
+    <color name="transparent">#00000000</color>
+    <color name="light_blue">#EDF7F9</color>
+    <color name="rating_star">#FDD835</color>
+</resources>

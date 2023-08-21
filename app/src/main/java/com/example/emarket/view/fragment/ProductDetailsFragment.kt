@@ -14,6 +14,7 @@ import com.example.emarket.presenter.ProductDetailsPresenter
 import com.example.emarket.view.adapter.ImagePagerAdapter
 import com.example.emarket.view.adapter.ReviewAdapter
 import com.example.emarket.view.adapter.SpecificationAdapter
+import com.google.android.material.tabs.TabLayout
 
 class ProductDetailsFragment : Fragment(), ProductDetailsContract.View {
     private lateinit var binding: FragmentProductDetailsBinding
@@ -51,16 +52,33 @@ class ProductDetailsFragment : Fragment(), ProductDetailsContract.View {
         imageAdapter = ImagePagerAdapter(requireContext(), imageUrls)
         binding.vpImage.adapter = imageAdapter
         binding.circleIndicator.setViewPager(binding.vpImage)
-
+        binding.tvPrice.text = "$ ${product.price}"
+        binding.tabsDetails.addTab(binding.tabsDetails.newTab().setText("Specifications"))
+        binding.tabsDetails.addTab(binding.tabsDetails.newTab().setText("Reviews"))
         val reviews = product.reviews
         reviewAdapter = ReviewAdapter(reviews)
         binding.rvReviews.adapter = reviewAdapter
         binding.rvReviews.layoutManager = LinearLayoutManager(requireContext())
-
         val specifications = product.specifications
         specificationAdapter = SpecificationAdapter(specifications)
         binding.rvSpecifications.adapter = specificationAdapter
         binding.rvSpecifications.layoutManager = LinearLayoutManager(requireContext())
+        binding.tabsDetails.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                when (tab?.position){
+                    0 -> {
+                        binding.rvSpecifications.visibility = View.VISIBLE
+                        binding.rvReviews.visibility = View.GONE
+                    }
+                    1 -> {
+                        binding.rvSpecifications.visibility = View.GONE
+                        binding.rvReviews.visibility = View.VISIBLE
+                    }
+                }
+            }
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+        })
     }
 
     override fun addProductToCart() {

@@ -5,56 +5,67 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.emarket.R
+import com.example.emarket.databinding.FragmentOrderDetailsBinding
+import com.example.emarket.model.local.entity.Order
+import com.example.emarket.model.local.entity.Subcategory
+import com.example.emarket.presenter.OrderDetailsContract
+import com.example.emarket.presenter.OrderDetailsPresenter
+import com.example.emarket.view.adapter.CheckoutItemAdapter
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [OrderDetailsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class OrderDetailsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class OrderDetailsFragment : Fragment(), OrderDetailsContract.View {
+    private lateinit var binding: FragmentOrderDetailsBinding
+    private lateinit var presenter: OrderDetailsPresenter
+    private lateinit var itemAdapter: CheckoutItemAdapter
+    private var orderId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        orderId = arguments?.getString(ARG_ORDER_ID)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_order_details, container, false)
+        binding = FragmentOrderDetailsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        presenter = OrderDetailsPresenter(this, requireContext())
+        orderId?.let { presenter.getOrderDetailsRemote(it) }
+    }
+
+    override fun displayOrderDetails(order: Order) {
+        with(binding){
+            tvOrderId.text = "#${orderId}"
+            tvOrderStatus.text = order.order_status
+            tvTotalBill.text = "$ ${order.bill_amount}"
+            tvAddressTitle.text = order.address_title
+            tvAddress.text = order.address
+            var payment = order.payment_method
+            if (payment == "COD") {
+                payment = "Cash on Delivery"
+            }
+            tvPayment.text = payment
+            val items = order.items
+            itemAdapter = CheckoutItemAdapter(items)
+            rvCheckoutCart.adapter = itemAdapter
+            rvCheckoutCart.layoutManager = LinearLayoutManager(requireContext())
+        }
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment OrderDetailsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            OrderDetailsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        private const val ARG_ORDER_ID = "orderId"
+        fun newInstance(orderId: String): OrderDetailsFragment {
+            val fragment = OrderDetailsFragment()
+            val args = Bundle()
+            args.putString(ARG_ORDER_ID, orderId)
+            fragment.arguments = args
+            return fragment
+        }
     }
 }

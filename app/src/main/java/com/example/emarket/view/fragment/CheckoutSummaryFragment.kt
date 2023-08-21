@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.emarket.R
 import com.example.emarket.databinding.FragmentCheckoutCartBinding
@@ -14,6 +15,7 @@ import com.example.emarket.model.local.dao.CartDao
 import com.example.emarket.model.local.entity.Order
 import com.example.emarket.presenter.CheckoutSummaryContract
 import com.example.emarket.presenter.CheckoutSummaryPresenter
+import com.example.emarket.utils.AppUtils
 import com.example.emarket.view.adapter.CheckoutItemAdapter
 
 
@@ -56,10 +58,12 @@ class CheckoutSummaryFragment : Fragment(), CheckoutSummaryContract.View {
         binding.btnNext.setOnClickListener {
             val orderJson = presenter.createOrderJson(order)
             presenter.placeOrder(orderJson)
+            cartDao.clearAllEntries()
         }
     }
 
     override fun handleOrderResult(orderId: Int) {
         Log.i("tag", orderId.toString())
+        AppUtils.navigateToFragment(requireActivity() as AppCompatActivity, R.id.main_fragment_container, OrderDetailsFragment.newInstance(orderId.toString()))
     }
 }

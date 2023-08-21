@@ -19,6 +19,15 @@ class AddAddressFragment : DialogFragment() {
         fun onAddressSaved(address: String, title: String)
     }
 
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.apply {
+            val width = (resources.displayMetrics.widthPixels * 0.8).toInt()
+            val height = (resources.displayMetrics.heightPixels * 0.8).toInt()
+            setLayout(width, height)
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

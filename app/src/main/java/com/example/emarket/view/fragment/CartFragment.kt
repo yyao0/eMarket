@@ -36,6 +36,8 @@ class CartFragment : Fragment(), CartContract.View, CartProductAdapter.CartProdu
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val actionBar = (activity as AppCompatActivity).supportActionBar
+        actionBar?.setTitle("Shopping Cart")
         presenter = CartPresenter(this, requireContext())
         cartDao = CartDao(requireContext())
         displayCartProducts()

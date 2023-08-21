@@ -1,4 +1,13 @@
 package com.example.emarket.presenter
 
-class ProfileContract {
+import com.example.emarket.model.local.entity.User
+
+interface ProfileContract {
+    interface View{
+        fun displayUser(user: User)
+        fun navigateToOrders()
+    }
+    interface Presenter{
+        fun getUser(): User
+    }
 }
